@@ -1,0 +1,153 @@
+# GET http://localhost:8080/web.game.server/trang-chu
+
+POST http://localhost:8080/wg.server/xac-thuc/dang-ky
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "email": "admin@gmail.com",
+    "matKhau":"123"
+}
+
+# POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
+# Content-Type: application/json
+
+# {
+#     "email": "nghia@gmail.com",
+#     "matKhau":"123"
+# }
+
+# POST http://localhost:8080/wg.server/quan-ly/tao/cau-hoi
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTM0NTcyOTAsImV4cCI6MTY1NDA2MjA5MH0.QUhAwU0GkoaD0dcIZAYaZ8jLqeox6J1ui20kiU1Vp2bBa_QwUHybuh2VudlURogAJ2Z8ukmUMWzeWAXkuovosw
+
+# {
+#     "noiDung": "ai ku nho nhat",
+#     "dapAn": {
+#         "danhSachLuaChon": [
+#            {
+#                 "id": 4,
+#                 "giaiThich": "lucky boy",
+#                 "noiDUng": "quan"
+#             }
+#         ]
+#     },
+#     "goiY": {
+#         "danhSachLuaChon": [
+#             {
+#                 "id": 1,
+#                 "giaiThich": "sad boy",
+#                 "noiDUng": "minh"
+#             },
+#             {
+#                 "id": 2,
+#                 "giaiThich": "fuck boy",
+#                 "noiDUng": "quy"
+#             },
+#             {
+#                 "id": 3,
+#                 "giaiThich": "hien nhien",
+#                 "noiDUng": "nghia"
+#             },
+#             {
+#                 "id": 4,
+#                 "giaiThich": "lucky boy",
+#                 "noiDUng": "quan"
+#             },
+#         ]
+#     },
+#     "diem": 300,
+#     "capDo": 1
+# }
+
+# POST http://localhost:8080/wg.server/quan-ly/xoa/cau-hoi
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+
+# {
+#     "id":4
+# }
+
+# POST http://localhost:8080/wg.server/quan-ly/cap-nhat/cau-hoi
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+
+# {
+#     "id":8,
+#     "noiDung": "ai bat ca nhieu nhat",
+#     "dapAn": {
+#         "danhSachLuaChon": [
+#            {
+#                 "id": 1,
+#                 "giaiThich": "sad boy",
+#                 "noiDung": "minh"
+#             }
+#         ]
+#     },
+#     "goiY": {
+#         "danhSachLuaChon": [
+#             {
+#                 "id": 1,
+#                 "giaiThich": "sad boy",
+#                 "noiDung": "minh"
+#             },
+#             {
+#                 "id": 2,
+#                 "giaiThich": "fuck boy",
+#                 "noiDung": "quy"
+#             },
+#             {
+#                 "id": 3,
+#                 "giaiThich": "hien nhien",
+#                 "noiDung": "nghia"
+#             },
+#             {
+#                 "id": 4,
+#                 "giaiThich": "lucky boy",
+#                 "noiDung": "quan"
+#             }
+#         ]
+#     },
+#     "diem": 1000,
+#     "capDo": 1
+# }
+
+# GET  http://localhost:8080/wg.server/quan-ly/danh-sach/cau-hoi
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+
+
+# POST   http://localhost:8080/wg.server/tro-choi/bat-dau
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+
+# {
+#     "danhSachLoaiCauHoi": [
+#         {
+#             "soLuong": 1,
+#             "capDo": 1
+#         },
+#         {
+#             "soLuong": 2,
+#             "capDo": 2
+#         }
+#     ]
+# }
+
+# POST   http://localhost:8080/wg.server/phong/tao
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+
+# {
+#     "soLuong": 3,
+#     "trangThai": 1
+# }
+
+
+# POST   http://localhost:8080/wg.server/phong/tham-gia
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+
+# {
+#     "id": 2
+# }

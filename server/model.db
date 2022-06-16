@@ -1,0 +1,56 @@
+
+create table if not exists nguoiDung(
+	id int auto_increment key,
+    username char(255),
+    email char(255),
+    matKhau char(255),
+    quyen text,
+    avatar text,
+    moTa text,
+    gioiTinh int,
+    dangNhapLanCuoi long,
+    kinhNghiem long,
+    vang long,
+    trangThai int
+);
+
+
+create table if not exists cauHoi(
+	id int auto_increment key,
+    noiDung text,
+    goiY text,
+    dapAn text,
+    nguoiDungId int,
+    capDo int,
+    diem int,
+    loai int,
+    FOREIGN KEY(nguoiDungId) REFERENCES nguoiDung(id) ON DELETE CASCADE
+);
+
+create table if not exists phong(
+	id int auto_increment key,
+    nguoiDungId int,
+    trangThai int,
+    soLuongNguoiDung int,
+    FOREIGN KEY(nguoiDungId) REFERENCES nguoiDung(id) ON DELETE CASCADE
+);
+
+create table if not exists ghiChepNguoiDung(
+    nguoiDungId int,
+    phongId int,
+    diem int,
+    trangThai int,
+    FOREIGN KEY(nguoiDungId) REFERENCES nguoiDung(id) ON DELETE CASCADE,
+    FOREIGN KEY(phongId) REFERENCES phong(id) ON DELETE CASCADE
+);
+
+create table if not exists ghiChepCauHoi(
+    nguoiDungId int,
+    phongId int,
+    cauHoiId int,
+    diem int,
+    trangThai int,
+    FOREIGN KEY(nguoiDungId) REFERENCES nguoiDung(id) ON DELETE CASCADE,
+    FOREIGN KEY(phongId) REFERENCES phong(id) ON DELETE CASCADE,
+    FOREIGN KEY(cauHoiId) REFERENCES cauHoi(id) ON DELETE CASCADE
+);

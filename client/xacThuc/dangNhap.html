@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Email:<input type="text" name="email" id="email" /><br/>  
+    Password:<input type="password" name="matKhau" id="matKhau"/><br/>  
+    <button id="submit">Submit</button>
+
+    <script src="../tienIch/Fetch.js"></script>
+
+    <script>
+        const email = document.querySelector("#email");
+        const matKhau = document.querySelector("#matKhau");
+        const submit = document.querySelector("#submit");
+        submit.addEventListener("click",()=>{
+            console.log("??",email.value);
+            const  fecth = new Fetch();
+            fecth.post('xac-thuc/dang-nhap',{
+                email: email.value,
+                matKhau: matKhau.value
+            }).then((data)=>{
+                console.log(data);
+                if(data.trangThai != -1){
+                    localStorage.setItem("token",data.token);
+                    window.location.href = "../troChoi/troChoi.html";
+                }
+            })
+        })
+    </script>
+</body>
+</html>

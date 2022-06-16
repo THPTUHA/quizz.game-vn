@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tro Choi</title>
+</head>
+<body>
+    <button id="create_room">Tạo phòng</button>
+    <textarea id="messageTextarea" readonly="readonly"></textarea>
+    <input type="text" id="messageText"/>
+    <button onclick="sendMessage();">Send</button>
+
+    <script src="../tienIch/Fetch.js"></script>
+    <script>
+        const token = localStorage.getItem("token");
+        // const create_room = document.querySelector("#create_room");
+
+        // create_room.addEventListener("click",()=>{
+        //     const  fecth = new Fetch();
+        //     fecth.postJWT('room/create',{
+        //     }).then((data)=>{
+        //         console.log(data);
+        //         const websocket = new WebSocket(`ws://localhost:8080/web.game.server/game?token=${token}?room_id=${data.id}`);
+        //         websocket.onmessage = (message)=>{
+        //             const jsonData = JSON.parse(message.data);
+        //             console.log("Message send",jsonData);
+        //             if(jsonData) messageTextarea.value += jsonData.message + "\n";
+        //         }
+        //     })
+        // })
+        const websocket = new WebSocket(`ws://localhost:8080/wg.server/tro-choi?token=${token}`);
+        websocket.onmessage = (message)=>{
+            const jsonData = JSON.parse(message.data);
+             console.log("Message send",jsonData);
+            if(jsonData) messageTextarea.value += jsonData.message + "\n";
+        }
+        
+        const sendMessage = ()=>{
+            console.log("mesage",messageText,messageText.value);
+            websocket.send(messageText.value);
+            messageText.value="";
+        }
+    </script>
+</body>
+</html>

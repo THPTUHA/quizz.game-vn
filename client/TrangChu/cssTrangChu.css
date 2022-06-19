@@ -1,0 +1,191 @@
+body {
+    background: no-repeat;
+    background-image: url("../img/trangChu2.png");
+}
+
+#buttonNhanVat {
+    background-color: transparent;
+    border-color: transparent;
+    transition-duration: 0.4s;
+}
+
+
+#buttonNhanVat:hover {
+    background-color: blueviolet;
+    border-radius: 70px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: goldenrod;
+}
+
+#avt {
+    width: 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 20px;
+    color: brown;
+}
+
+.modal {
+    display: none;
+    background-color: rgb(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+#giaoDienTrangChu {
+    display: flex;
+    margin-left: 160px;
+    justify-content: center
+}
+
+input {
+    width: 300px;
+    height: 40px;
+    border-radius: 100px;
+}
+
+#vienAvt {
+    padding: 50px;
+    margin-top: 70px;
+    border: 5px solid blueviolet;
+    border-radius: 100px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: dodgerblue;
+}
+
+#menu {
+    font-style: normal;
+    width: 300px;
+    height: 50px;
+    margin-top: 40px;
+    margin-left: 20px;
+    background-color: aquamarine;
+    border-color: black;
+    transition-duration: 0.4s;
+    font-size: 30px;
+    border-radius: 70px;
+}
+
+#menu:hover {
+    background-color: blueviolet;
+    border-radius: 70px;
+}
+
+#trangChu {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#nhanVat {
+    text-align: center;
+    margin-top: 400px;
+    margin-left: 100px;
+}
+
+.modal-noiDung {
+    width: 400px;
+    margin: auto;
+    top: 30%;
+    position: relative;
+    background-color: rgb(163, 96, 226);
+    border-radius: 30px;
+}
+
+#buttonTaoPhong {
+    background-color: crimson;
+    color: black;
+    cursor: pointer;
+    padding: 0px 30px;
+    display: inline-block;
+    line-height: 30px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 23px;
+    letter-spacing: 2px;
+}
+
+#buttonTaoPhong:hover {
+    background-color: #4CAF50;
+}
+
+#buttonBatDau {
+    border: none;
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0px 30px;
+    display: inline-block;
+    margin: 30px 30px;
+    line-height: 46px;
+    font-weight: 400;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    border-radius: 23px;
+    letter-spacing: 2px;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input {
+    text-indent: 10px;
+}
+
+#buttonBatDau:before {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-radius: inherit;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+#buttonBatDau:after {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border: 3px solid darkturquoise;
+    content: '';
+    border-radius: inherit;
+}
+
+#buttonBatDau:hover,
+#buttonBatDau.hover {
+    background-color: darkturquoise;
+    color: #ffffff;
+}
+
+#buttonBatDau:hover:before,
+#buttonBatDau.hover:before {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 0.25;
+}

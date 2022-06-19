@@ -1,0 +1,171 @@
+body {
+    background: no-repeat;
+    background-image: url("../img/quizzGame.png");
+}
+
+#quizzGame {
+    display: flex;
+    justify-content: center;
+    margin-top: 250px;
+    text-align: center;
+}
+
+input {
+    text-indent: 10px;
+}
+
+img {
+    width: 200px;
+}
+
+#giaoDienCauHoi {
+    margin-top: 40px;
+    border-width: 50%;
+    width: 1160px;
+    text-align: center;
+}
+
+#soCau {
+    font-size: 50px;
+    color: burlywood;
+}
+
+#tenCau {
+    font-size: 30px;
+    color: brown;
+}
+
+#numPoint {
+    text-align: center;
+    font-size: 50px;
+    width: 250px;
+    color: aquamarine;
+    border: 4px solid #4CAF50;
+    border-radius: 20px;
+    height: 60px;
+}
+
+#anhThoiGian {
+    width: 30px;
+}
+
+#thoiGian {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#textThoiGian {
+    color: red;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#avt2 {
+    margin-right: 10px;
+}
+
+h1 {
+    color: cadetblue;
+}
+
+#point {
+    margin-top: 100px;
+}
+
+#name {
+    font-size: 30px;
+    background-color: midnightblue;
+    color: darkorange;
+    border: 5px solid darkgreen;
+    border-radius: 20px;
+    border-style: inset;
+}
+
+#cauHoi {
+    margin-top: 20px;
+}
+
+#dapAn {
+    background-color: crimson;
+    width: 500px;
+    color: black;
+    cursor: pointer;
+    padding: 0px 30px;
+    display: inline-block;
+    line-height: 30px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 23px;
+    letter-spacing: 2px;
+}
+
+#dapAn:hover {
+    background-color: #4CAF50;
+    font-style: normal;
+}
+
+#dapAn {
+    border: none;
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0px 30px;
+    display: inline-block;
+    margin: 15px 30px;
+    line-height: 46px;
+    font-weight: 400;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    border-radius: 23px;
+    letter-spacing: 2px;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#dapAn:before {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-radius: inherit;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+#dapAn:after {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border: 3px solid darkgray;
+    content: '';
+    border-radius: inherit;
+}
+
+#dapAn:hover,
+#dapAn.hover {
+    background-color: darkgray;
+    color: #ffffff;
+}
+
+#dapAn:hover:before,
+#dapAn.hover:before {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 0.25;
+}

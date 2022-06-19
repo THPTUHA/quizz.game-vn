@@ -86,7 +86,7 @@ public class CauHoiDao {
         cauHoi.setCapDo(ketQua.getInt("capDo"));
         cauHoi.setDiem(ketQua.getInt("diem"));
         cauHoi.setLoai(ketQua.getInt("loai"));
-
+        cauHoi.setNoiDung(ketQua.getString("noiDung"));
         return cauHoi;
     }
 

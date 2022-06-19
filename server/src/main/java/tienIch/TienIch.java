@@ -34,7 +34,7 @@ public class TienIch extends HttpServlet{
 
     public static  void guiJson(HttpServletResponse response, Object obj) throws IOException {
 		Gson _gson = new Gson();
-		response.setContentType("application/json");
+		response.setContentType("application/json; charset=UTF-8");
 		String res = _gson.toJson(obj);
 		     
 		PrintWriter out = response.getWriter();

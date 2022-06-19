@@ -1,8 +1,7 @@
 
 create table if not exists nguoiDung(
 	id int auto_increment key,
-    username char(255),
-    email char(255),
+    ten char(255),
     matKhau char(255),
     quyen text,
     avatar text,

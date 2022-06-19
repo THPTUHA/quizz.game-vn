@@ -5,23 +5,23 @@ import java.util.ArrayList;
 import model.object.CauHoi;
 
 public class Game {
-    private ArrayList<CauHoi> questions;
+    private ArrayList<CauHoi> danhSachCauHoi;
 
     public Game() {
     }
 
 
-    public Game(ArrayList<CauHoi> questions) {
-        this.questions = questions;
+    public Game(ArrayList<CauHoi> danhSachCauHoi) {
+        this.danhSachCauHoi = danhSachCauHoi;
     }
 
 
-    public ArrayList<CauHoi> getQuestions() {
-        return this.questions;
+    public ArrayList<CauHoi> getDanhSachCauHoi() {
+        return this.danhSachCauHoi;
     }
 
-    public void setQuestions(ArrayList<CauHoi> questions) {
-        this.questions = questions;
+    public void setQuestions(ArrayList<CauHoi> danhSachCauHoi) {
+        this.danhSachCauHoi = danhSachCauHoi;
     }
 
 }

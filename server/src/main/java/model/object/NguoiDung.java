@@ -2,8 +2,7 @@ package model.object;
 
 public class NguoiDung {
     private int id = 0;
-    private String username;
-    private String email;
+    private String ten;
     private String matKhau;
     private String quyen ;
     private String avatar;
@@ -20,10 +19,9 @@ public class NguoiDung {
 
 
 
-    public NguoiDung(int id, String username, String email, String matKhau, String quyen, String avatar, String moTa, int gioiTinh, long dangNhapLanCuoi, long kinhNghiem, long vang, int trangThai) {
+    public NguoiDung(int id, String ten, String matKhau, String quyen, String avatar, String moTa, int gioiTinh, long dangNhapLanCuoi, long kinhNghiem, long vang, int trangThai) {
         this.id = id;
-        this.username = username;
-        this.email = email;
+        this.ten = ten;
         this.matKhau = matKhau;
         this.quyen = quyen;
         this.avatar = avatar;
@@ -48,20 +46,12 @@ public class NguoiDung {
         this.id = id;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getTen() {
+        return this.ten;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getMatKhau() {
@@ -141,8 +131,7 @@ public class NguoiDung {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", username='" + getUsername() + "'" +
-            ", email='" + getEmail() + "'" +
+            ", ten='" + getTen() + "'" +
             ", matKhau='" + getMatKhau() + "'" +
             ", quyen='" + getQuyen() + "'" +
             ", avatar='" + getAvatar() + "'" +

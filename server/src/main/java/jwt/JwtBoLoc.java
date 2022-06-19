@@ -53,9 +53,9 @@ public class JwtBoLoc implements Filter  {
         try {
             String jwt = layJwtTuRequest(req);
             if ( JwtTokenCungCap.thoaManToken( jwt,(HttpServletResponse)response)) {
-                String email = JwtTokenCungCap.layEmailTuJWT(jwt);
-                System.out.println("FUCCCCCCCCCCCCCCCCK "+ email);
-                NguoiDung nguoiDung = NguoiDungDao.layUserTheoEmail(email);
+                String ten = JwtTokenCungCap.layTenTuJWT(jwt);
+                System.out.println("FUCCCCCCCCCCCCCCCCK "+ ten);
+                NguoiDung nguoiDung = NguoiDungDao.layNguoiDungTheoTen(ten);
                 request.setAttribute("nguoiDung",nguoiDung);
             }
 

@@ -27,6 +27,7 @@ public class TaoPhong extends HttpServlet{
             TienIch.guiJson(resp, new Loi(-1,"Bạn không có quyền!"));
             return;
         }
+        phong.setTrangThai(HangSo.HOAT_DONG);
         phong.setNguoiDung(nguoiDung);
         PhongDao.luu(phong);
         

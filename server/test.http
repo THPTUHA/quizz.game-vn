@@ -1,21 +1,20 @@
 # GET http://localhost:8080/web.game.server/trang-chu
 
-POST http://localhost:8080/wg.server/xac-thuc/dang-ky
-Content-Type: application/json
-
-{
-    "username":"admin",
-    "email": "admin@gmail.com",
-    "matKhau":"123"
-}
-
-# POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
+# POST http://localhost:8080/wg.server/xac-thuc/dang-ky
 # Content-Type: application/json
 
 # {
-#     "email": "nghia@gmail.com",
+#     "ten":"quan",
 #     "matKhau":"123"
 # }
+
+POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
+Content-Type: application/json
+
+{
+    "ten": "quan",
+    "matKhau":"123"
+}
 
 # POST http://localhost:8080/wg.server/quan-ly/tao/cau-hoi
 # Content-Type: application/json
@@ -114,7 +113,7 @@ Content-Type: application/json
 
 # GET  http://localhost:8080/wg.server/quan-ly/danh-sach/cau-hoi
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NTU3MTcxMywiZXhwIjoxNjU2MTc2NTEzfQ.MftMqSkx8iTnwCPQWIlS0OaX_LMqcsN7e00JzkmmksbPxD8bDL3myK6sqCejiXKfEBt912NHSVUaB_8mc7SMUw
 
 
 # POST   http://localhost:8080/wg.server/tro-choi/bat-dau

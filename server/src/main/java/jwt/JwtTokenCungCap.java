@@ -21,14 +21,14 @@ public class JwtTokenCungCap{
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
         return Jwts.builder()
-                   .setSubject(user.getEmail())
+                   .setSubject(user.getTen())
                    .setIssuedAt(now)
                    .setExpiration(expiryDate)
                    .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
                    .compact();
     }
 
-    static public String layEmailTuJWT(String token) {
+    static public String layTenTuJWT(String token) {
         Claims claims = Jwts.parser()
                             .setSigningKey(JWT_SECRET)
                             .parseClaimsJws(token)

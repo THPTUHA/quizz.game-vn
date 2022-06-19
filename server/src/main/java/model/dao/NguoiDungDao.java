@@ -13,12 +13,11 @@ public class NguoiDungDao {
         int  status = 0;
         try {
             Connection con  = DatabaseKetNoi.init();
-            String query = "insert into nguoiDung(username,email,matKhau,quyen) values (?,?,?,?)";
+            String query = "insert into nguoiDung(ten,matKhau,quyen) values (?,?,?)";
             PreparedStatement ps=con.prepareStatement(query); 
-            ps.setString(1, nguoiDung.getUsername());
-            ps.setString(2, nguoiDung.getEmail());
-            ps.setString(3, nguoiDung.getMatKhau());
-            ps.setString(4, nguoiDung.getQuyen());
+            ps.setString(1, nguoiDung.getTen());
+            ps.setString(2, nguoiDung.getMatKhau());
+            ps.setString(3, nguoiDung.getQuyen());
             status = ps.executeUpdate();
             System.out.println(status);
 
@@ -33,8 +32,7 @@ public class NguoiDungDao {
         nguoiDung.setId(ketQua.getInt("id"));
         nguoiDung.setAvatar(ketQua.getString("avatar"));
         nguoiDung.setMatKhau(ketQua.getString("matKhau"));
-        nguoiDung.setUsername(ketQua.getString("username"));
-        nguoiDung.setEmail(ketQua.getString("email"));
+        nguoiDung.setTen(ketQua.getString("ten"));
         nguoiDung.setKinhNghiem(ketQua.getLong("kinhNghiem"));
         nguoiDung.setVang(ketQua.getLong("vang"));
         nguoiDung.setQuyen(ketQua.getString("quyen"));
@@ -60,12 +58,12 @@ public class NguoiDungDao {
         return null;
     }
 
-    public static NguoiDung layUserTheoEmail(String email){
+    public static NguoiDung layNguoiDungTheoTen(String ten){
         try {
             Connection con  = DatabaseKetNoi.init();
-            String query = "select * from nguoiDung where nguoiDung.email = ? limit 1";
+            String query = "select * from nguoiDung where nguoiDung.ten = ? limit 1";
             PreparedStatement ps=con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,  ResultSet.CONCUR_UPDATABLE); 
-            ps.setString(1, email);
+            ps.setString(1, ten);
             ResultSet tapKetQua = ps.executeQuery();
 
             NguoiDung nguoiDung = new NguoiDung();

@@ -28,7 +28,7 @@ public class DanhSachCauHoi extends HttpServlet{
         }
         ArrayList<CauHoi> danhSachCauHoi = CauHoiDao.phanTrang(1,10);
         for(CauHoi cauHoi: danhSachCauHoi){
-            System.out.println(cauHoi);
+            System.out.println(cauHoi.getNoiDung());
         }
         TienIch.guiJson(resp, new Game(danhSachCauHoi));
     }

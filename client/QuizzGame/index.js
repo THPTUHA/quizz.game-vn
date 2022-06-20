@@ -6,11 +6,17 @@ const phong = document.getElementById("phongId");
 const nguoiChoiSoMot = document.getElementById("nguoiChoiSoMot");
 const nguoiChoiSoHai = document.getElementById("nguoiChoiSoHai");
 const cauHoi = document.getElementById("giaoDienCauHoi");
-const dapAn1 = document.getElementById("dapAn1");
-const dapAn2 = document.getElementById("dapAn2");
-const dapAn3 = document.getElementById("dapAn3");
-const dapAn4 = document.getElementById("dapAn4");
-const chuPhong = localStorage.getItem("chuPhong");
+const dapAn1 = document.getElementById("dapAn0");
+const dapAn2 = document.getElementById("dapAn1");
+const dapAn3 = document.getElementById("dapAn2");
+const dapAn4 = document.getElementById("dapAn3");
+
+const danhSachLuaChon  = [dapAn1,dapAn2,dapAn3,dapAn4];
+const soCau = document.getElementById("soCau");
+const tenCau = document.getElementById("tenCau");
+const diem = document.getElementById("diem");
+const capDo = document.getElementById("capDo");
+
 
 const websocket = new WebSocket(`ws://localhost:8080/wg.server/tro-choi?token=${token}&&phongId=${phongId}`);
 
@@ -27,7 +33,7 @@ websocket.onmessage = (duLieu)=>{
             nguoiChoiSoMot.childNodes[3].innerText = lenh.chuPhong.nguoiDung.ten;
             nguoiChoiSoMot.childNodes[5].childNodes[3].innerText = lenh.chuPhong.diem;
             nguoiChoiSoMot.style.display ="block";
-            localStorage.setItem("chuPhong",1);
+
             break;
         case "batDau":
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
@@ -41,20 +47,19 @@ websocket.onmessage = (duLieu)=>{
             nguoiChoiSoHai.style.display ="block";
             phongMoi.style.display = "none";
 
-           if(chuPhong){
-                websocket.send(JSON.stringify({
-                    lenh: "batDau"
-                }));
-           }
-        // case "guiCauHoi": 
-        //     cauHoi.childNodes[1].childNodes[1].innerText = "Câu :" + "";
-        //     cauHoi.childNodes[1].childNodes[3].innerText = lenh.cauHoi.noiDung;
-        //     for(let i = 0; i < 4; ++i) {
-        //         let noiDung = 
-        //         document.getElementById('dapAn'+i).innerText = noiDung
-        //         ;
-        //     }
-
+           websocket.send(JSON.stringify({
+                lenh: "batDau"
+            }));
+        case "guiCauHoi": 
+            soCau.innerText = "Câu :";
+            tenCau.innerText = lenh.cauHoi.noiDung;
+            diem.innerText = lenh.cauHoi.diem;
+            capDo.innerText = lenh.cauHoi.capDo;
+            for(let i = 0 ;i < lenh.cauHoi.goiY.danhSachLuaChon.length ; ++i){
+                danhSachLuaChon[i].innerText = lenh.cauHoi.goiY.danhSachLuaChon[i].noiDung;
+                danhSachLuaChon[i].tabIndex = lenh.cauHoi.goiY.danhSachLuaChon[i].id;
+            }
+            cauHoi.style.display = "block";
 
    }
 }

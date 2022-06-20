@@ -67,6 +67,8 @@ public class Choi {
                 lenhThongBao.setPhongId(phongId);
                 phongHienTai.add(phien);
 
+                phien.getUserProperties().put("chuPhong", false);
+                
                 lenhThongBao.setChuPhong((GhiChepNguoiDung)phongHienTai.get(0).getUserProperties().get("nguoiChoi"));
                 lenhThongBao.setKhach((GhiChepNguoiDung)phongHienTai.get(1).getUserProperties().get("nguoiChoi"));
                 for (Session phienNguoiDung: phongHienTai) {
@@ -97,6 +99,7 @@ public class Choi {
         GhiChepNguoiDung nguoiDung = (GhiChepNguoiDung) phien.getUserProperties().get("nguoiChoi");
         Lenh lenhMoi = new Lenh();
         int phongId = nguoiDung.getPhong().getId();
+        System.out.println("phongIdTRC"+ phongId);
 
         final ArrayList<Session> phongHienTai = danhSachPhong.get(phongId);
         final ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
@@ -201,7 +204,7 @@ public class Choi {
         System.out.println("wtf");
         GhiChepNguoiDung nguoiDung = (GhiChepNguoiDung) phien.getUserProperties().get("nguoiChoi");
         int phongId = nguoiDung.getPhong().getId();
-        
+
         ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
         int cauHienTai = (int)phien.getUserProperties().get("cauHienTai") ;
         if (cauHienTai >= 10) {

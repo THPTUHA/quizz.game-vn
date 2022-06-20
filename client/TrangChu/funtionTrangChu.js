@@ -21,7 +21,7 @@ function btnBatDau() {
     if (txtPhong == "") {
         alert("tên phòng không được để trống");
     } else {
-        
+
         var fetch = new Fetch();
         var idPhong = document.getElementById("txtNhapPhong").value;
         var idAnh = document.getElementById("chonAnh").src.split('avt')[1][0];
@@ -33,7 +33,7 @@ function btnBatDau() {
             .then(function (data) {
                 if (data.id) {
                     localStorage.setItem("phongId", data.id);
-                    window.location.href = "/quizzGame";
+                    window.location.href = "../quizzGame";
                 } else {
                     alert(data.loiNhan);
                 }
@@ -41,18 +41,18 @@ function btnBatDau() {
     }
 }
 
- function btnTaoPhong() {
+function btnTaoPhong() {
     var fetch = new Fetch();
     var idAnh = document.getElementById("chonAnh").src.split('avt')[1][0];
     // const phong = document.getElementById("phongId");
 
     fetch.postJWT("phong/tao", {
         anhDaiDien: idAnh,
-        
+
     }).then(function (data) {
         if (data.id) {
             localStorage.setItem("phongId", data.id);
-            window.location.href = "/quizzGame";
+            window.location.href = "../quizzGame";
         } else {
             alert(data.loiNhan);
         }

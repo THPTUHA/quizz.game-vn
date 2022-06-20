@@ -83,7 +83,7 @@ public class Choi {
         switch(lenh.getLenh()){
             case "batDau":
                 // if(lenh.getPhongId() != 0 ){
-                //    Phong phong = PhongDao.layRoomTheoId(lenh.getPhongId());
+                //    Phong phong = PhongDao.layPhongTheoId(lenh.getPhongId());
                 //    if(phong == null){
                 //         lenhMoi.setLenh("Loi");
                 //         lenhMoi.setLoi(new Loi(-1, "Phòng không tồn tại!"));

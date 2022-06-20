@@ -25,6 +25,8 @@ public class DangNhap extends HttpServlet{
             TienIch.guiJson(resp, new Loi(-1,"Sai tên hoặc mật khẩu!"));
             return;
         }
+        
+        System.out.println("Trang Thai: TEST "+nguoiDungTonTai);
 
         if(nguoiDungTonTai.getTrangThai() == HangSo.CAM){
             TienIch.guiJson(resp, new Loi(-1,"Tài khoản đã bị cấm!"));

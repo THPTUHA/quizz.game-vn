@@ -5,7 +5,7 @@ public class NguoiDung {
     private String ten;
     private String matKhau;
     private String quyen ;
-    private String avatar;
+    private String anhDaiDien;
     private String moTa;
     private int gioiTinh;
     private long dangNhapLanCuoi;
@@ -19,12 +19,12 @@ public class NguoiDung {
 
 
 
-    public NguoiDung(int id, String ten, String matKhau, String quyen, String avatar, String moTa, int gioiTinh, long dangNhapLanCuoi, long kinhNghiem, long vang, int trangThai) {
+    public NguoiDung(int id, String ten, String matKhau, String quyen, String anhDaiDien, String moTa, int gioiTinh, long dangNhapLanCuoi, long kinhNghiem, long vang, int trangThai) {
         this.id = id;
         this.ten = ten;
         this.matKhau = matKhau;
         this.quyen = quyen;
-        this.avatar = avatar;
+        this.anhDaiDien = anhDaiDien;
         this.moTa = moTa;
         this.gioiTinh = gioiTinh;
         this.dangNhapLanCuoi = dangNhapLanCuoi;
@@ -70,12 +70,12 @@ public class NguoiDung {
         this.quyen = quyen;
     }
 
-    public String getAvatar() {
-        return this.avatar;
+    public String getAnhDaiDien() {
+        return this.anhDaiDien;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setAnhDaiDien(String anhDaiDien) {
+        this.anhDaiDien = anhDaiDien;
     }
 
     public String getMoTa() {
@@ -134,7 +134,7 @@ public class NguoiDung {
             ", ten='" + getTen() + "'" +
             ", matKhau='" + getMatKhau() + "'" +
             ", quyen='" + getQuyen() + "'" +
-            ", avatar='" + getAvatar() + "'" +
+            ", anhDaiDien='" + getAnhDaiDien() + "'" +
             ", moTa='" + getMoTa() + "'" +
             ", gioiTinh='" + getGioiTinh() + "'" +
             ", dangNhapLanCuoi='" + getDangNhapLanCuoi() + "'" +

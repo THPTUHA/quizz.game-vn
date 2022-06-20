@@ -39,6 +39,7 @@ create table if not exists ghiChepNguoiDung(
     phongId int,
     diem int,
     trangThai int,
+    anhDaiDien varchar(255),
     FOREIGN KEY(nguoiDungId) REFERENCES nguoiDung(id) ON DELETE CASCADE,
     FOREIGN KEY(phongId) REFERENCES phong(id) ON DELETE CASCADE
 );

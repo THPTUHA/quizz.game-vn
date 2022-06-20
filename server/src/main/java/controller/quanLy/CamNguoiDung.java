@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import hangSo.HangSo;
 import lop.Loi;
+import model.dao.NguoiDungDao;
 import model.object.NguoiDung;
 import tienIch.TienIch;
 
@@ -25,17 +26,20 @@ public class CamNguoiDung  extends HttpServlet {
             return;
         }
         
-        if(nguoiDungXuLy == null){
+        NguoiDung nguoiDungTonTai = NguoiDungDao.layUserTheoId(nguoiDungXuLy.getId(), true);
+        if(nguoiDungTonTai == null){
             TienIch.guiJson(resp, new Loi(-1,"Người dùng không tông tại!"));
             return;
         }
-        
-        if(nguoiDung.getTrangThai() == HangSo.CAM){
-            nguoiDung.setTrangThai(HangSo.HOAT_DONG);
+
+        if(nguoiDungTonTai.getTrangThai() == HangSo.CAM){
+            nguoiDungTonTai.setTrangThai(HangSo.HOAT_DONG);
         }else{
-            nguoiDung.setTrangThai(HangSo.CAM);
+            nguoiDungTonTai.setTrangThai(HangSo.CAM);
         }
 
-        TienIch.guiJson(resp, nguoiDung);
+        NguoiDungDao.capNhat(nguoiDungTonTai);
+
+        TienIch.guiJson(resp, nguoiDungTonTai);
     }
 }

@@ -70,3 +70,7 @@ function doiNguoiChoi() {
 }
 
 
+
+function btnThoatTroChoi() {
+    window.location.href = "../dangnhap/index.html";
+}

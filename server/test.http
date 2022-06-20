@@ -4,7 +4,7 @@ POST http://localhost:8080/wg.server/xac-thuc/dang-ky
 Content-Type: application/json
 
 {
-    "ten":"quan",
+    "ten":"minh2",
     "matKhau":"123"
 }
 

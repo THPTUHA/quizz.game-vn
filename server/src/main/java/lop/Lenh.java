@@ -2,9 +2,6 @@ package lop;
 
 import model.object.CauHoi;
 import model.object.GhiChepNguoiDung;
-import model.object.GhiChepNguoiDung;
-
-import java.util.ArrayList;
 
 public class Lenh {
     private String lenh;
@@ -13,7 +10,6 @@ public class Lenh {
     private Loi loi;
     private GhiChepNguoiDung chuPhong;
     private GhiChepNguoiDung khach;
-
 
     public Lenh() {
     }

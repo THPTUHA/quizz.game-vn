@@ -12,6 +12,8 @@ public class CauHoi {
     private int capDo;
     private int diem;
     private int loai;
+    private int soThuTu;
+    private int thoiGianTonTai;
 
 
     public CauHoi() {
@@ -94,7 +96,34 @@ public class CauHoi {
         this.loai = loai;
     }
 
+    /**
+     * @return the soThuTu
+     */
+    public int getSoThuTu() {
+        return soThuTu;
+    }
 
+    /**
+     * @param soThuTu the soThuTu to set
+     */
+    public void setSoThuTu(int soThuTu) {
+        this.soThuTu = soThuTu;
+    }
+
+    /**
+     * @return the thoiGianTonTai
+     */
+    public int getThoiGianTonTai() {
+        return thoiGianTonTai;
+    }
+
+    /**
+     * @param thoiGianTonTai the thoiGianTonTai to set
+     */
+    public void setThoiGianTonTai(int thoiGianTonTai) {
+        this.thoiGianTonTai = thoiGianTonTai;
+    }
+    
     @Override
     public String toString() {
         return "{" +

@@ -16,14 +16,14 @@ const soCau = document.getElementById("soCau");
 const tenCau = document.getElementById("tenCau");
 const diem = document.getElementById("diem");
 const capDo = document.getElementById("capDo");
-
+const thoiGianTonTai = document.getElementById("thoiGianTonTai");
+let interval;
 
 const websocket = new WebSocket(`ws://26.69.27.44:8080/wg.server/tro-choi?token=${token}&&phongId=${phongId}`);
 
 websocket.onmessage = (duLieu) => {
     console.log("DATA", duLieu);
     const lenh = JSON.parse(duLieu.data);
-    console.log("Lenh", lenh);
     console.dir(cauHoi);
 
     switch (lenh.lenh) {
@@ -32,13 +32,8 @@ websocket.onmessage = (duLieu) => {
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
             nguoiChoiSoMot.childNodes[3].innerText = lenh.chuPhong.nguoiDung.ten;
             nguoiChoiSoMot.childNodes[5].childNodes[3].innerText = lenh.chuPhong.diem;
-<<<<<<< HEAD
             nguoiChoiSoMot.style.display ="block";
 
-=======
-            nguoiChoiSoMot.style.display = "block";
-            localStorage.setItem("chuPhong", 1);
->>>>>>> fb8a9267bb409615cc50a5f245f61b144c3b9f27
             break;
         case "batDau":
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
@@ -56,15 +51,24 @@ websocket.onmessage = (duLieu) => {
                 lenh: "batDau"
             }));
         case "guiCauHoi": 
-            soCau.innerText = "Câu :";
+            soCau.innerText = "Câu " +(lenh.cauHoi.soThuTu +1) ;
             tenCau.innerText = lenh.cauHoi.noiDung;
-            diem.innerText = lenh.cauHoi.diem;
-            capDo.innerText = lenh.cauHoi.capDo;
+            diem.innerText = "Điểm "+ lenh.cauHoi.diem;
+            capDo.innerText = "Cấp độ " + lenh.cauHoi.capDo;
             for(let i = 0 ;i < lenh.cauHoi.goiY.danhSachLuaChon.length ; ++i){
                 danhSachLuaChon[i].innerText = lenh.cauHoi.goiY.danhSachLuaChon[i].noiDung;
                 danhSachLuaChon[i].tabIndex = lenh.cauHoi.goiY.danhSachLuaChon[i].id;
             }
             cauHoi.style.display = "block";
+            let thoiGianConLai = parseInt(lenh.cauHoi.thoiGianTonTai/1000);
+            clearInterval(interval);
+            interval = setInterval(()=>{
+                if(thoiGianConLai < 0){
+                    clearInterval(interval);
+                }
+                thoiGianTonTai.innerText = (thoiGianConLai - 1) + 's';
+                thoiGianConLai -= 1;
+            },1000);
 
     }
 }

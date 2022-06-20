@@ -68,7 +68,7 @@ public class Choi {
                 phongHienTai.add(phien);
 
                 phien.getUserProperties().put("chuPhong", false);
-                
+
                 lenhThongBao.setChuPhong((GhiChepNguoiDung)phongHienTai.get(0).getUserProperties().get("nguoiChoi"));
                 lenhThongBao.setKhach((GhiChepNguoiDung)phongHienTai.get(1).getUserProperties().get("nguoiChoi"));
                 for (Session phienNguoiDung: phongHienTai) {
@@ -228,7 +228,12 @@ public class Choi {
         }
         else {
             System.out.println("Cau hoi hien tai "+ cauHienTai);
-            Lenh lenhGuiCauHoi = new Lenh("guiCauHoi", danhSachCauHoi.get(cauHienTai));
+            CauHoi cauHoi = danhSachCauHoi.get(cauHienTai);
+            cauHoi.setSoThuTu(cauHienTai);
+            cauHoi.setThoiGianTonTai(HangSo.THOI_GIAN);
+            
+            Lenh lenhGuiCauHoi = new Lenh("guiCauHoi", cauHoi);
+            
             System.out.println("Cau hoi moi : "+  danhSachCauHoi.get(cauHienTai));
             cauHienTai += 1;
             // An dap an khoi cau hoi

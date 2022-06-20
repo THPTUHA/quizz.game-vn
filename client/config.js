@@ -47,9 +47,6 @@ class Fetch {
     });
     return response.json();
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 
@@ -57,4 +54,3 @@ const url = window.location.href;
 if (url[url.length - 1] != "/") {
   window.location.href = url + "/";
 }
->>>>>>> quan

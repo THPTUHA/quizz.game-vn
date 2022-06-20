@@ -6,22 +6,22 @@ function dangNhap() {
     } else {
         var fetch = new Fetch();
         fetch.post("xac-thuc/dang-nhap", {
-            email: tendangnhap,
+            ten: tendangnhap,
             matKhau: matkhau
         })
-        .then(function (data) {
-            try {
-                localStorage.setItem("token", data.token);
-                alert("Đăng nhập thành công!");
-                window.location.href = "/trangchu";
-            }
-            catch (err) {
-                alert("Tên đăng nhập hoặc mật khẩu không đúng!");
-            }
-        })
-        .catch(function (err) {
-            alert("Đã có lỗi xảy ra!");
-            console.log(err);
-        });        
+            .then(function (data) {
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                    alert("Đăng nhập thành công!");
+                    window.location.href = "/trangchu";
+                }
+                else if (data.trangThai == -1) {
+                    alert(data.loiNhan);
+                }
+            })
+            .catch(function (err) {
+                alert("Đã có lỗi xảy ra!");
+                console.log(err);
+            });
     }
 }

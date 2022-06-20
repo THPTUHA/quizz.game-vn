@@ -16,24 +16,25 @@ function chon_cauhoi() {
 
 function lay_nguoidung() {
     const fetch = new Fetch();
-    fetch.getJWT("get_users")
+    fetch.getJWT("quan-ly/danh-sach/nguoi-dung")
         .then(function (data) {
-            if (data.success) {
-                var ds_nguoidung = data.users;
+            console.log(data);
+            const ds_nguoidung = data.danhSachNguoiDung;
+            if (ds_nguoidung.length > 0) {
                 var html = "";
                 for (var i = 0; i < ds_nguoidung.length; i++) {
                     var nguoidung = ds_nguoidung[i];
                     html += `
                     <tr>
                         <td>${i + 1}</th>
-                        <td>${nguoidung.name}</td>
-                        <td>${nguoidung.username}</td>
+                        <td>${nguoidung.id}</td>
+                        <td>${nguoidung.ten}</td>
                         <td>
-                            ${nguoidung.active
+                            ${nguoidung.trangThai != -1
                             ?
-                            `<button id="${nguoidung.username}" onclick="thaotac('${nguoidung.username}', 1)" class="nut nut_do">Khóa</button>`
+                            `<button id="${nguoidung.id}" onclick="thaotac('${nguoidung.id}', -1)" class="nut nut_do">Khóa</button>`
                             :
-                            `<button id="${nguoidung.username}" onclick="thaotac('${nguoidung.username}', 0)" class="nut nut_xanhduong">Mở khóa</button>`
+                            `<button id="${nguoidung.id}" onclick="thaotac('${nguoidung.id}', 0)" class="nut nut_xanhduong">Mở khóa</button>`
                         }
                         </td>
                     </tr>
@@ -46,41 +47,75 @@ function lay_nguoidung() {
         });
 }
 
-function thaotac(tendangnhap, trangthai) {
-    if (trangthai && !confirm("Bạn có chắc chắn muốn khóa tài khoản này?")) {
+function thaotac(id, trangthai) {
+    if (trangthai == -1 && !confirm("Bạn có chắc chắn muốn khóa tài khoản này?")) {
         return;
     }
-    if (!trangthai && !confirm("Bạn có chắc chắn muốn mở khóa tài khoản này?")) {
+    if (trangthai == 0 && !confirm("Bạn có chắc chắn muốn mở khóa tài khoản này?")) {
         return;
     }
     const fetch = new Fetch();
-    fetch.postJWT("users/update", {
-        tendangnhap: tendangnhap
+    fetch.postJWT("quan-ly/cam/nguoi-dung", {
+        id: id
     })
         .then(function (data) {
-            if (data.success) {
+            console.log(data);
+            if (data.id == id) {
                 // alert(data.message);
                 // alert("Thao tác thành công!");
                 if (trangthai) {
-                    document.getElementById(tendangnhap).innerHTML = "Mở khóa";
-                    document.getElementById(tendangnhap).onclick = function () {
-                        thaotac(tendangnhap, 0);
+                    document.getElementById(id).innerHTML = "Mở khóa";
+                    document.getElementById(id).onclick = function () {
+                        thaotac(id, 0);
                     };
-                    document.getElementById(tendangnhap).classList.remove("nut_do");
-                    document.getElementById(tendangnhap).classList.add("nut_xanhduong");
+                    document.getElementById(id).classList.remove("nut_do");
+                    document.getElementById(id).classList.add("nut_xanhduong");
                 } else {
-                    document.getElementById(tendangnhap).innerHTML = "Khóa";
-                    document.getElementById(tendangnhap).onclick = function () {
-                        thaotac(tendangnhap, 1);
+                    document.getElementById(id).innerHTML = "Khóa";
+                    document.getElementById(id).onclick = function () {
+                        thaotac(id, -1);
                     };
-                    document.getElementById(tendangnhap).classList.remove("nut_xanhduong");
-                    document.getElementById(tendangnhap).classList.add("nut_do");
+                    document.getElementById(id).classList.remove("nut_xanhduong");
+                    document.getElementById(id).classList.add("nut_do");
                 }
             } else {
                 // alert(data.message);
                 alert("Thao tác thất bại!");
             }
         });
+}
+
+function loc_cauhoi() {
+    let capdo_inp = document.getElementById("loc_capdo");
+    capdo_inp.onkeydown = function (e) {
+        if (e.code != 'Digit3' && e.code != 'Digit2' && e.code != 'Digit1' && e.code != 'Digit0') {
+            return;
+        }
+        capdo_inp.value = '';
+    }
+    if (capdo_inp.value != '1' && capdo_inp.value != '2' && capdo_inp.value != '3' && capdo_inp.value != '0') {
+        capdo_inp.value = '';
+        return;
+    }
+    Object.values(document.getElementsByClassName("tr_cauhoi")).forEach(function (tr) {
+        tr.style.display = "none";
+    });
+    Object.values(document.getElementsByClassName("tr_" + capdo_inp.value)).forEach(function (tr) {
+        tr.style.display = "table-row";
+    });
+    stt();
+}
+
+
+function stt() {
+    var nd_cauhoi = document.getElementById("nd_cauhoi");
+    let idx = 1;
+    for (var i = 1; i < nd_cauhoi.children.length; i += 2) {
+        if (nd_cauhoi.children[i].style.display != "none") {
+            nd_cauhoi.children[i].children[0].innerHTML = idx;
+            idx++;
+        }
+    }
 }
 
 function lay_cauhoi() {
@@ -96,7 +131,9 @@ function lay_cauhoi() {
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
-                        <td>0</td>
+                        <td>
+                            <input type="text" id="loc_capdo" maxlength="1" onkeyup="loc_cauhoi()" style="width:20px;text-align:center;" />
+                        </td>
                         <td>
                             <button class="nut nut_xanhcay" onclick="them()">Thêm</button>
                         </td>
@@ -114,9 +151,9 @@ function lay_cauhoi() {
                 var diem = ds_cauhoi[i].diem;
 
                 html += ` 
-                    <tr id="${id}">
+                    <tr id="${id}" class="tr_cauhoi tr_${capdo} tr_0">
                         <div id="${id}_dapan" hidden>${dapan}</div>
-                        <td>${i + 1}</td>
+                        <td class="stt">${i + 1}</td>
                         <td id="${id}_ch">${cauhoi}</td>
                         <td>
                             <p id="${id}_a" class="dapan ${dapan === 'a' ? 'dapandung' : ''}">${a}</p>
@@ -262,7 +299,7 @@ function luu() {
         diem: diem
     })
         .then(function (data) {
-            
+
             console.log(data);
 
             try {
@@ -291,7 +328,7 @@ function luu() {
                 document.getElementById(id + "_capdo").innerHTML = capdo;
                 document.getElementById(id + "_diem").innerHTML = diem;
                 document.getElementById("nenmo").style.display = "none";
-            } 
+            }
             catch (error) {
                 alert("Sửa thất bại!");
             }

@@ -25,7 +25,7 @@ p {
     font-size: 25px;
     font-style: inherit;
     margin: auto;
-    margin-top: 20%;
+    margin-top: 320px;
     text-align: center;
     background-color: rgb(110, 11, 202);
     width: 500px;
@@ -44,7 +44,7 @@ a:hover {
 
 .nut_dangky {
     border: none;
-    background-color: #7cbce7;
+    background-color: #b8bbbb;
     border-radius: 20px;
     color: #000000;
     cursor: pointer;

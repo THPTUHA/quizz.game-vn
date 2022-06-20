@@ -1,38 +1,35 @@
 
-function kiemtratendangnhap(tendangnhap) {
-    var kiemtra = /^[a-zA-Z0-9]{4,32}$/;
-    return kiemtra.test(tendangnhap);
+function kiemtraten(ten) {
+    var kiemtra = /^[a-zA-Z0-9]{3,32}$/;
+    return kiemtra.test(ten);
 }
 
 function dangKy() {
     var ten = document.getElementById("ten").value;
-    var tendangnhap = document.getElementById("tendangnhap").value;
     var matkhau = document.getElementById("matkhau").value;
     var matkhau2 = document.getElementById("matkhau2").value;
-    if (ten == "" || tendangnhap == "" || matkhau == "" || matkhau2 == "") {
+    if (ten == "" || matkhau == "" || matkhau2 == "") {
         alert("Vui lòng nhập đầy đủ thông tin!");
     }
     else if (matkhau != matkhau2) {
         alert("Mật khẩu không trùng khớp!");
     }
-    else if (!kiemtratendangnhap(tendangnhap)) {
-        alert("Tên đăng nhập có độ dài từ 4 đến 30 ký tự và chỉ chứa các chữ cái và số");
+    else if (!kiemtraten(ten)) {
+        alert("Tên có độ dài từ 3 đến 32 ký tự và chỉ chứa các chữ cái và số");
     }
     else {
         var fetch = new Fetch();
-        fetch.post("dangky", {
+        fetch.post("xac-thuc/dang-ky", {
             ten: ten,
-            tendangnhap: tendangnhap,
-            matkhau: matkhau
+            matKhau: matkhau
         })
         .then(function (data) {
-            if (data.success) {
+            console.log(data);
+            if (data.token == 'OK') {
                 alert("Đăng ký thành công!");
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("ten", data.user.name);
-                window.location.href = "/";
+                window.location.href = "/dangnhap";
             } else {
-                alert(data.message);
+                alert(data.loiNhan);
             }
         })
         .catch(function (err) {

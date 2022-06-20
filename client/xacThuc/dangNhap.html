@@ -7,27 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    Email:<input type="text" name="email" id="email" /><br/>  
+    Username:<input type="text" name="ten" id="ten" /><br/>  
     Password:<input type="password" name="matKhau" id="matKhau"/><br/>  
     <button id="submit">Submit</button>
 
     <script src="../tienIch/Fetch.js"></script>
 
     <script>
-        const email = document.querySelector("#email");
+        const username = document.querySelector("#ten");
         const matKhau = document.querySelector("#matKhau");
         const submit = document.querySelector("#submit");
         submit.addEventListener("click",()=>{
-            console.log("??",email.value);
+            console.log("??",username.value);
             const  fecth = new Fetch();
             fecth.post('xac-thuc/dang-nhap',{
-                email: email.value,
+                ten: username.value,
                 matKhau: matKhau.value
             }).then((data)=>{
                 console.log(data);
                 if(data.trangThai != -1){
                     localStorage.setItem("token",data.token);
-                    window.location.href = "../troChoi/troChoi.html";
+                    window.location.href = "../troChoi/phong.html";
                 }
             })
         })

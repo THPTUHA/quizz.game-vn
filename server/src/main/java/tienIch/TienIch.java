@@ -49,7 +49,7 @@ public class TienIch extends HttpServlet{
 		return  GSON.fromJson(json,object);
 	}
 
-	public static  Object layObject(String json, Class object) throws IOException{
+	public static  Object layObject(String json, Class object) {
 		Gson GSON = new GsonBuilder().create();
 		return  GSON.fromJson(json,object);
 	}

@@ -8,13 +8,13 @@
 #     "matKhau":"123"
 # }
 
-POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
-Content-Type: application/json
+# POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
+# Content-Type: application/json
 
-{
-    "ten": "quan",
-    "matKhau":"123"
-}
+# {
+#     "ten": "quan",
+#     "matKhau":"123"
+# }
 
 # POST http://localhost:8080/wg.server/quan-ly/tao/cau-hoi
 # Content-Type: application/json
@@ -133,20 +133,14 @@ Content-Type: application/json
 #     ]
 # }
 
-# POST   http://localhost:8080/wg.server/phong/tao
+# GET   http://localhost:8080/wg.server/phong/tao
 # Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFuIiwiaWF0IjoxNjU1NjU1MDA3LCJleHAiOjE2NTYyNTk4MDd9.fyARLp8p81-B9UcywaZfi5ObJQBmUjQQdsALVLqVO6jPfDV5gq8eYvS_YMtMIuKj9YTWFbCpP8Y5siD42KWueA
 
-# {
-#     "soLuong": 3,
-#     "trangThai": 1
-# }
+POST   http://localhost:8080/wg.server/phong/tham-gia
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
 
-
-# POST   http://localhost:8080/wg.server/phong/tham-gia
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYUBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNDQ1MTIsImV4cCI6MTY1Mzc0OTMxMn0.0Oe5UUkBDJZ-D1dkQHTnXsMRkJX8NSQgcbyxoebsrylbu2VcKrSRgoQO_5Yw_8FvDaXYrLorBiI2bhYBmGHjPw
-
-# {
-#     "id": 2
-# }
+{
+    "id": 34
+}

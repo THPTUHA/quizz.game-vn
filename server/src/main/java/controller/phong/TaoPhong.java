@@ -20,15 +20,17 @@ import tienIch.TienIch;
 @WebServlet("/phong/tao")
 public class TaoPhong extends HttpServlet{
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Phong phong = (Phong) TienIch.layObject(req, Phong.class);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NguoiDung nguoiDung = (NguoiDung)req.getAttribute("nguoiDung");
         if(nguoiDung == null){
             TienIch.guiJson(resp, new Loi(-1,"Bạn không có quyền!"));
             return;
         }
+
+        Phong phong = new Phong();
         phong.setTrangThai(HangSo.HOAT_DONG);
         phong.setNguoiDung(nguoiDung);
+        phong.setSoLuongNguoiDung(HangSo.SO_LUONG_NGUOI_THAM_GIA_MAC_DINH);
         PhongDao.luu(phong);
         
         GhiChepNguoiDung ghiChepNguoiDung = new GhiChepNguoiDung(nguoiDung, phong, 0, HangSo.HOAT_DONG);

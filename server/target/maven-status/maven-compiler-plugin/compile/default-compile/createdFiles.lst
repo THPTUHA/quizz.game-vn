@@ -3,7 +3,9 @@ jwt\JwtTokenCungCap.class
 model\object\NguoiDung.class
 model\dao\PhongDao.class
 controller\troChoi\LoaiCauHoi.class
+lop\Lenh.class
 jwt\JwtBoLoc.class
+lop\GiaiMa.class
 controller\quanLy\XoaCauHoi.class
 lop\GoiY.class
 model\DatabaseKetNoi.class
@@ -19,6 +21,7 @@ controller\phong\TaoPhong.class
 controller\troChoi\BatDau.class
 lop\LuaChon.class
 lop\Game.class
+lop\MaHoa.class
 controller\quanLy\DanhSachCauHoi.class
 lop\Loi.class
 controller\troChoi\Choi.class
@@ -27,6 +30,7 @@ model\object\GhiChepNguoiDung.class
 model\object\Phong.class
 controller\phong\ThamGiaPhong.class
 controller\quanLy\CapNhatCauHoi.class
+controller\troChoi\Choi$1.class
 controller\quanLy\TaoCauHoi.class
 controller\xacThuc\DangKy.class
 hangSo\HangSo.class

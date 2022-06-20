@@ -38,9 +38,6 @@ public class Choi {
     static Map<Integer,ArrayList<Session>> danhSachPhong =  Collections.synchronizedMap(new HashMap<Integer,ArrayList<Session>>());
     // static Set<Session> chatroom_users = Collections.synchronizedSet(new HashSet<Session>());
     final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-    private int phongId ;
-
-
 
     @OnOpen
     public void handleOpen(EndpointConfig endpoint_config, Session phien) throws IOException {
@@ -97,8 +94,10 @@ public class Choi {
     @OnMessage
     public void handleMessage(Lenh lenh,final Session phien) throws IOException{
         System.out.println("lenh "+ lenh);
-
+        GhiChepNguoiDung nguoiDung = (GhiChepNguoiDung) phien.getUserProperties().get("nguoiChoi");
         Lenh lenhMoi = new Lenh();
+        int phongId = nguoiDung.getPhong().getId();
+
         final ArrayList<Session> phongHienTai = danhSachPhong.get(phongId);
         final ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
 
@@ -116,9 +115,11 @@ public class Choi {
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,3));
 
                 // Set cau hoi hien tai
-                ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
+                System.out.println("phongId"+ phongId);
                 System.out.println("danh sach cau hoi : "+ danhSachCauHoi.size());
-                for (Session phienNguoiDung: phienTrongPhong) {
+                System.out.println("kich thuoc phong"+ phongHienTai.size());
+
+                for (Session phienNguoiDung: phongHienTai) {
                     phienNguoiDung.getUserProperties().put("cauHienTai", 0);
                 }
 
@@ -186,6 +187,8 @@ public class Choi {
     @OnClose
     public void handleClose(Session phien){
         System.out.println("-----------Close"+phien);
+        GhiChepNguoiDung nguoiDung = (GhiChepNguoiDung) phien.getUserProperties().get("nguoiChoi");
+        int phongId = nguoiDung.getPhong().getId();
         // xoa phong khoi map danh sach phong
         danhSachPhong.remove(phongId);
     }
@@ -196,6 +199,9 @@ public class Choi {
     private void guiCauHoiChoClient(Session phien, ArrayList<CauHoi> danhSachCauHoi) {
         // kiem tra cau hoi hien tai
         System.out.println("wtf");
+        GhiChepNguoiDung nguoiDung = (GhiChepNguoiDung) phien.getUserProperties().get("nguoiChoi");
+        int phongId = nguoiDung.getPhong().getId();
+        
         ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
         int cauHienTai = (int)phien.getUserProperties().get("cauHienTai") ;
         if (cauHienTai >= 10) {

@@ -8,13 +8,13 @@
 #     "matKhau":"123"
 # }
 
-# POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
-# Content-Type: application/json
+POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
+Content-Type: application/json
 
-# {
-#     "ten": "nghia",
-#     "matKhau":"123"
-# }
+{
+    "ten": "quy",
+    "matKhau":"123"
+}
 
 # POST http://localhost:8080/wg.server/quan-ly/tao/cau-hoi
 # Content-Type: application/json
@@ -145,6 +145,6 @@
 #     "id": 34
 # }
 
-GET http://localhost:8080/wg.server/quan-ly/danh-sach/nguoi-dung
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg
+# GET http://localhost:8080/wg.server/quan-ly/danh-sach/nguoi-dung
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg

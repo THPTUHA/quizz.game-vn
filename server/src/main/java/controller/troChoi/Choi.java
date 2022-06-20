@@ -1,11 +1,9 @@
 package controller.troChoi;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -22,18 +20,10 @@ import javax.websocket.server.ServerEndpoint;
 
 import lop.GiaiMa;
 import lop.Lenh;
-import lop.Loi;
 import lop.MaHoa;
 import model.dao.CauHoiDao;
-import model.dao.PhongDao;
 import model.object.CauHoi;
-import model.object.NguoiDung;
-import model.object.Phong;
 import socket.CauHinh;
-import tienIch.TienIch;
-
-import static model.dao.CauHoiDao.layCauHoiTheoCapDo;
-
 
 // TODO: them so luong cau hoi khi config
 
@@ -76,13 +66,14 @@ public class Choi {
         if(danhSachPhong.containsKey(phongId)){
             // Da ton tai phong
             ArrayList<Session> phongHienTai =  danhSachPhong.get(phongId);
-            phongHienTai.add(phien);
             ArrayList<Session> phong = danhSachPhong.get(phongId);
+            System.out.println("Kich thuoc phong "+ phong.size());
             if (phong.size() == 1) {
                 // Gui lenh bat dau cho chu phong khi nguoi choi da vao du
                 Lenh lenhBatDau = new Lenh();
                 lenhBatDau.setLenh("batDau");
                 lenhBatDau.setPhongId(phongId);
+                phongHienTai.add(phien);
                 phong.get(0).getAsyncRemote().sendObject(lenhBatDau);
             }
             else {
@@ -102,7 +93,7 @@ public class Choi {
     }
 
     @OnMessage
-    public void handleMessage(Lenh lenh, Session phien) throws IOException{
+    public void handleMessage(Lenh lenh,final Session phien) throws IOException{
         System.out.println("lenh "+ lenh);
         String ten = (String)phien.getUserProperties().get("ten");
         phongId = (int) phien.getUserProperties().get("phongId");
@@ -117,15 +108,18 @@ public class Choi {
             case "batDau":
 
                 // kiem tra neu khong phai chu phong -> break
+
                 if (!getChuPhong()) break;
+                System.out.println("chu phong");
                 // Sinh bo cau hoi ngau nhien
-                ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
+                final ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(4,1));
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,2));
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,3));
 
                 // Set cau hoi hien tai
                 ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
+                System.out.println("danh sach cau hoi : "+ danhSachCauHoi.size());
                 for (Session phienNguoiDung: phienTrongPhong) {
                     phienNguoiDung.getUserProperties().put("cauHienTai", 0);
                 }
@@ -135,7 +129,7 @@ public class Choi {
                     public void run() {
                         guiCauHoiChoClient(phien, danhSachCauHoi);
                     }
-                }, 3, 5, TimeUnit.SECONDS);
+                }, 2, 1, TimeUnit.SECONDS);
                     
 
                 // }else{
@@ -170,8 +164,9 @@ public class Choi {
     private void guiCauHoiChoClient(Session phien, ArrayList<CauHoi> danhSachCauHoi) {
         // kiem tra cau hoi hien tai
         ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
-        int cauHienTai;
-        if ((cauHienTai = (int)phien.getUserProperties().get("cauHienTai")) >= 10) {
+        int cauHienTai = (int)phien.getUserProperties().get("cauHienTai") ;
+        if (cauHienTai >= 10) {
+            System.out.println("Het cau hoi");
             Lenh lenhKetThuc = new Lenh("ketThuc");
             for (Session phienNguoiDung: phienTrongPhong) {
                 phienNguoiDung.getAsyncRemote().sendObject(lenhKetThuc);
@@ -181,8 +176,10 @@ public class Choi {
             timer.shutdown();
         }
         else {
+            System.out.println("Cau hoi hien tai "+ cauHienTai);
+            Lenh lenhGuiCauHoi = new Lenh("guiCauHoi", danhSachCauHoi.get(cauHienTai));
+            System.out.println("Cau hoi moi : "+  danhSachCauHoi.get(cauHienTai));
             cauHienTai += 1;
-            Lenh lenhGuiCauHoi = new Lenh("", danhSachCauHoi.get(cauHienTai));
             // Bo dap an khoi lenh
             lenhGuiCauHoi.getCauHoi().setDapAn(null);
 

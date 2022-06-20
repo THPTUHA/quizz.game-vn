@@ -13,7 +13,7 @@ function dangNhap() {
                 if (data.token) {
                     localStorage.setItem("token", data.token);
                     alert("Đăng nhập thành công!");
-                    window.location.href = "/trangchu";
+                    window.location.href = "../trangchu";
                 }
                 else if (data.trangThai == -1) {
                     alert(data.loiNhan);

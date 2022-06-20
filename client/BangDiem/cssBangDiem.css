@@ -65,3 +65,24 @@ h1 {
     height: 60px;
     margin-top: 50px;
 }
+
+.btn {
+    margin-top: 60px;
+    margin-left: 45%;
+    border: none;
+    background-color: blueviolet;
+    border-radius: 5px;
+    padding: 0px 30px;
+    display: inline-block;
+    line-height: 46px;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 23px;
+}
+
+
+.btn:hover,
+.btn.hover {
+    background-color: darkturquoise;
+    color: #ffffff;
+}

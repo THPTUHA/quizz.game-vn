@@ -2,11 +2,31 @@ package lop;
 
 import model.object.CauHoi;
 
+import java.util.ArrayList;
+
 public class Lenh {
     private String lenh;
     private int phongId;
     private CauHoi cauHoi;
     private Loi loi;
+    private int diemChuPhong;
+    private int diemKhach;
+
+    public int getDiemChuPhong() {
+        return diemChuPhong;
+    }
+
+    public void setDiemChuPhong(int diemChuPhong) {
+        this.diemChuPhong = diemChuPhong;
+    }
+
+    public int getDiemKhach() {
+        return diemKhach;
+    }
+
+    public void setDiemKhach(int diemKhach) {
+        this.diemKhach = diemKhach;
+    }
 
     public Lenh() {
     }
@@ -16,6 +36,15 @@ public class Lenh {
         this.phongId = phongId;
         this.cauHoi = cauHoi;
         this.loi = loi;
+    }
+
+    public Lenh(String lenh, CauHoi cauHoi) {
+        this.lenh = lenh;
+        this.cauHoi = cauHoi;
+    }
+
+    public Lenh(String lenh) {
+        this.lenh = lenh;
     }
 
 

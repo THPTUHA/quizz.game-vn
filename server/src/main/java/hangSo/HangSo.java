@@ -2,7 +2,7 @@ package hangSo;
 
 public class HangSo {
     public static final String url_roort = "order-management";
-
+    public static final int THOI_GIAN = 10000;
     public static final String view_trang_chu = "/view/trangChu/index.jsp";
     public static final String view_dang_nhap = "/view/xacThuc/dangNhap.jsp";
     public static final String view_dang_ky = "/view/xacThuc/dangKy.jsp";

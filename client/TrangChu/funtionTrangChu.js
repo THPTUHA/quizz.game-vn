@@ -71,18 +71,6 @@ function doiNguoiChoi() {
 
 
 
-// xử lý thoát trò chơi
-var phongMoi = document.getElementById("doiNguoiChoi");
-var taoPhong = document.getElementById("buttonTaoPhong");
-var taoPhongMoi = document.getElementsByClassName("taoPhong");
-var thoatPhong = document.getElementsByClassName("thoat");
-var tenPhong = document.getElementById("txtPhongMoi");
-
-taoPhong.onclick = function () {
-    phongMoi.style.display = "block";
-}
-
-function btnThoat() {
-    document.getElementById("txtNhapPhong").value = "";
-    phongMoi.style.display = "none";
+function btnThoatTroChoi() {
+    window.location.href = "../dangnhap/index.html";
 }

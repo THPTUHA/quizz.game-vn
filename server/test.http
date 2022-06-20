@@ -12,7 +12,7 @@ Content-Type: application/json
 # Content-Type: application/json
 
 # {
-#     "ten": "quy2",
+#     "ten": "quy",
 #     "matKhau":"123"
 # }
 
@@ -141,24 +141,6 @@ Content-Type: application/json
 #     "anhDaiDien": 1
 # }
 
-POST http://localhost:8080/wg.server/phong/tham-gia
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg
-
-{
-    "id": 40,
-    "anhDaiDien": 2
-}
-
 # GET http://localhost:8080/wg.server/quan-ly/danh-sach/nguoi-dung
 # Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg
-
-
-# POST http://localhost:8080/wg.server/quan-ly/cam/nguoi-dung
-# Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg
-
-# {
-#     "id": 14
-# }

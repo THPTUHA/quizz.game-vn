@@ -18,6 +18,15 @@ public class Lenh {
         this.loi = loi;
     }
 
+    public Lenh(String lenh, CauHoi cauHoi) {
+        this.lenh = lenh;
+        this.cauHoi = cauHoi;
+    }
+
+    public Lenh(String lenh) {
+        this.lenh = lenh;
+    }
+
 
 
     public String getLenh() {

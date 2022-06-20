@@ -1,12 +1,12 @@
 # GET http://localhost:8080/web.game.server/trang-chu
 
-# POST http://localhost:8080/wg.server/xac-thuc/dang-ky
-# Content-Type: application/json
+POST http://localhost:8080/wg.server/xac-thuc/dang-ky
+Content-Type: application/json
 
-# {
-#     "ten":"quan",
-#     "matKhau":"123"
-# }
+{
+    "ten":"quan",
+    "matKhau":"123"
+}
 
 # POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
 # Content-Type: application/json

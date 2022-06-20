@@ -34,7 +34,7 @@ import socket.CauHinh;
                 encoders = MaHoa.class
             )
 public class Choi {
-    static Map<Integer,ArrayList<Session>> danhSachPhong =  Collections.synchronizedMap(new HashMap<>());
+    static Map<Integer,ArrayList<Session>> danhSachPhong =  Collections.synchronizedMap(new HashMap<Integer,ArrayList<Session>>());
     // static Set<Session> chatroom_users = Collections.synchronizedSet(new HashSet<Session>());
     final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private int phongId;
@@ -122,7 +122,12 @@ public class Choi {
                     phienNguoiDung.getUserProperties().put("cauHienTai", 0);
                 }
 
-                timer.scheduleWithFixedDelay(() -> guiCauHoiChoClient(phien, danhSachCauHoi), 3000, HangSo.THOI_GIAN, TimeUnit.MILLISECONDS);
+                timer.scheduleWithFixedDelay(new Runnable() {
+                    @Override
+                    public void run(){
+                        guiCauHoiChoClient(phien, danhSachCauHoi);
+                    }
+                }, 3000, HangSo.THOI_GIAN, TimeUnit.MILLISECONDS); 
                 break;
             case "guiDapAn":
                 int idCauHoi = lenh.getCauHoi().getId();

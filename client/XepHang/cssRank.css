@@ -1,0 +1,22 @@
+body {
+    background: no-repeat;
+    background-image: url("../img/thangCuoc.png");
+}
+
+#nhanVat {
+    text-align: center;
+    margin-top: 400px;
+}
+
+input {
+    text-indent: 10px;
+}
+
+img {
+    width: 300px;
+}
+
+#name {
+    font-size: 50px;
+    color: aquamarine;
+}

@@ -1,0 +1,174 @@
+@import "/base.css";
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#thanhquanly {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    background-color: #f2f2f2;
+}
+
+#thanhquanly h1 {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+    font-weight: bold;
+    color: #000;
+    background-color: #e6c5c5;
+}
+
+.ql {
+    width: calc(100% - 10px);
+    height: 50px;
+    background-color: #acbfe2;
+    text-align: left;
+    text-indent: 20px;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    border-radius: 15px;
+    margin: 5px 5px;
+}
+
+.ql:hover {
+    background-color: #a7a7a7;
+}
+
+#noidung {
+    width: calc(100% - 300px);
+    min-height: 100%;
+    margin-left: 300px;
+    text-align: center;
+}
+
+.nd {
+    width: 100%;
+    min-height: 100%;
+}
+
+.dapan {
+    width: calc(50% - 13px);
+    margin: 5px 5px;
+    display: inline-block;
+    background-color: rgb(226, 189, 189);
+    padding: 10px 0;
+}
+
+.dapandung {
+    background-color: lightgreen;
+}
+
+#nenmo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.5);
+    display: none;
+}
+
+#cuaso_suacauhoi {
+    width: 60%;
+    height: 60%;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    background-color: #f2f2f2;
+}
+
+#cuaso_suacauhoi h1 {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+    font-weight: bold;
+    color: #000;
+    background-color: #e6c5c5;
+}
+
+#cuaso_suacauhoi label {
+    width: 100px;
+    display: inline-block;
+    margin: 10px 0 10px 40px;
+}
+
+#cuaso_suacauhoi input {
+    width: calc(100% - 200px);
+    height: 40px;
+    border-radius: 30px;
+    margin: 10px auto;
+    font-size: 16px;
+    text-indent: 15px;
+}
+
+#luu {
+    position: absolute;
+    bottom: 40px;
+    right: 160px;
+}
+
+#them {
+    position: absolute;
+    bottom: 40px;
+    right: 160px;
+}
+
+.huy {
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+}
+
+select {
+    width: 120px;
+    height: 35px;
+    border-radius: 12px;
+    margin: 10px auto;
+    font-size: 16px;
+    text-align: center;
+    text-align-last: center;
+}
+
+
+#cuaso_themcauhoi {
+    width: 60%;
+    height: 60%;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    background-color: #f2f2f2;
+}
+
+#cuaso_themcauhoi h1 {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 0;
+    font-weight: bold;
+    color: #000;
+    background-color: #e6c5c5;
+}
+
+#cuaso_themcauhoi label {
+    width: 100px;
+    display: inline-block;
+    margin: 10px 0 10px 40px;
+}
+
+#cuaso_themcauhoi input {
+    width: calc(100% - 200px);
+    height: 40px;
+    border-radius: 30px;
+    margin: 10px auto;
+    font-size: 16px;
+    text-indent: 15px;
+}
+
+.diem {
+    width: 120px!important;
+}

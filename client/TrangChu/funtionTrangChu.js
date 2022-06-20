@@ -13,15 +13,6 @@ taoPhong.onclick = function () {
     phongMoi.style.display = "block";
 }
 
-function btnTaoPhong() {
-    var txtNhapPhong = document.getElementById("txtPhongMoi").value;
-    if (txtNhapPhong == "") {
-        alert("Yêu cầu nhập tên phòng");
-    } else {
-        document.getElementById("txtNhapPhong").value = document.getElementById("txtPhongMoi").value
-    }
-    phongMoi.style.display = "none";
-}
 function btnThoat() {
     document.getElementById("txtNhapPhong").value = "";
     phongMoi.style.display = "none";
@@ -30,11 +21,8 @@ function btnThoat() {
 var thamGia = "phong/tham-gia";
 
 function btnBatDau() {
-    var txtBietDanh = document.getElementById("txtBietDanh").value;
     var txtPhong = document.getElementById("txtNhapPhong").value;
-    if (txtBietDanh == "") {
-        alert("biệt danh không được để trống");
-    } else if (txtPhong == "") {
+    if (txtPhong == "") {
         alert("tên phòng không được để trống");
     } else {
         var fetch = new Fetch();
@@ -46,10 +34,10 @@ function btnBatDau() {
             anh: idAnh
         })
             .then(function (data) {
-                if (data.thanhCong) {
-                    window.location.href = "../QuizzGame/QuizzGame.html";
+                if (data.id) {
+                    doiNguoiChoi();
                 } else {
-                    alert("Phòng không hợp lệ");
+                    alert(data.loiNhan);
                 }
             })
     }
@@ -64,11 +52,21 @@ function btnTaoPhong() {
     })
         .then(function (data) {
             if (data.thanhCong) {
-                window.location.href = "../QuizzGame/QuizzGame.html";
+                doiNguoiChoi();
             } else {
-                alert("Tạo phòng không hợp lệ");
+                alert(data.loiNhan);
             }
         })
+}
+
+function doiNguoiChoi() {
+    var txtNhapPhong = document.getElementById("txtPhongMoi").value;
+    if (txtNhapPhong == "") {
+        alert("Yêu cầu nhập tên phòng");
+    } else {
+        document.getElementById("txtNhapPhong").value = document.getElementById("txtPhongMoi").value
+    }
+    phongMoi.style.display = "none";
 }
 
 

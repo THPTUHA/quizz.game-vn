@@ -11,25 +11,23 @@
 
 <body>
     <div id="nhanVat">
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(1)" src="../img/avt1.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(2)" src="../img/avt2.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(3)" src="../img/avt3.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(4)" src="../img/avt4.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(5)" src="../img/avt5.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(6)" src="../img/avt6.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(7)" src="../img/avt7.png" alt=""></button>
-        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(8)" src="../img/avt8.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(1)" src="/img/avt1.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(2)" src="/img/avt2.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(3)" src="/img/avt3.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(4)" src="/img/avt4.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(5)" src="/img/avt5.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(6)" src="/img/avt6.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(7)" src="/img/avt7.png" alt=""></button>
+        <button id="buttonNhanVat"><img id="avt" onclick="hienAvt(8)" src="/img/avt8.png" alt=""></button>
     </div>
     <div id="trangChu">
         <div id="giaoDienTrangChu">
             <div id="vienAvt"><img id="chonAnh" src="../img/avt1.png" style="width: 300px;" alt=""></div>
-            <div style="margin-left: 200px;">
-                <h1>Biệt danh</h1>
-                <input id="txtBietDanh" type="text" value=""><br>
-                <h1>Nhập phòng</h1>
+            <div style="margin-left: 200px; margin-top: 60px;">
+                <h1>Nhập ID</h1>
                 <input id="txtNhapPhong" type="text" value=""><br>
-                <button id="buttonBatDau" onclick="btnBatDau()">Bắt đầu</button>
-                <p>bạn chưa có phòng? <button id="buttonTaoPhong">Tạo phòng</button></p>
+                <button id="buttonBatDau" onclick="btnBatDau()">Tham gia</button>
+                <p>bạn chưa có phòng? <button id="buttonTaoPhong" onclick="btnTaoPhong()">Tạo phòng</button></p>
             </div>
         </div>
         <div id="phongMoi" class="modal">
@@ -44,7 +42,8 @@
             </div>
         </div>
     </div>
-    <script src=" funtionTrangChu.js"></script>
+    <script src="funtionTrangChu.js"></script>
+    <script src="../config.js"></script>
 </body>
 
 </html>

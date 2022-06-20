@@ -55,7 +55,7 @@ public class JwtBoLoc implements Filter  {
             if ( JwtTokenCungCap.thoaManToken( jwt,(HttpServletResponse)response)) {
                 String ten = JwtTokenCungCap.layTenTuJWT(jwt);
                 System.out.println("FUCCCCCCCCCCCCCCCCK "+ ten);
-                NguoiDung nguoiDung = NguoiDungDao.layNguoiDungTheoTen(ten);
+                NguoiDung nguoiDung = NguoiDungDao.layNguoiDungTheoTen(ten, true);
                 request.setAttribute("nguoiDung",nguoiDung);
             }
 

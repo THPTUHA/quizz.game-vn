@@ -29,7 +29,7 @@ public class DangKy extends HttpServlet {
             TienIch.guiJson(resp, new Loi(-1,"Thiếu mật khẩu"));
             return;
         }
-        NguoiDung user_exist = NguoiDungDao.layNguoiDungTheoTen(nguoiDung.getTen());
+        NguoiDung user_exist = NguoiDungDao.layNguoiDungTheoTen(nguoiDung.getTen(),true);
         if(user_exist.getId() != 0){
             System.out.println(user_exist);
             TienIch.guiJson(resp, new Loi(-1,"Tên đã tồn tại!"));

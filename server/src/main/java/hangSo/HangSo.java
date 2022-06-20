@@ -18,5 +18,7 @@ public class HangSo {
     public static final String NGUOI_DUNG = "nguoiDung";
 
     public static final int HOAT_DONG = 1;
+    public static final int CAM = -1;
     public static final int SO_LUONG_NGUOI_THAM_GIA_MAC_DINH = 2;
+
 }

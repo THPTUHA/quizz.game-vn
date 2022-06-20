@@ -10,6 +10,7 @@ controller\quanLy\XoaCauHoi.class
 lop\GoiY.class
 model\DatabaseKetNoi.class
 controller\xacThuc\DangNhap.class
+controller\quanLy\DanhSachNguoiDung.class
 controller\troChoi\DanhSachLoaiCauHoi.class
 model\object\CauHoi.class
 controller\xacThuc\DangXuat.class
@@ -31,6 +32,7 @@ model\object\Phong.class
 controller\phong\ThamGiaPhong.class
 controller\quanLy\CapNhatCauHoi.class
 controller\troChoi\Choi$1.class
+controller\quanLy\CamNguoiDung.class
 controller\quanLy\TaoCauHoi.class
 controller\xacThuc\DangKy.class
 hangSo\HangSo.class

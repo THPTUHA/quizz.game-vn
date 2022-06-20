@@ -12,6 +12,8 @@ E:\normal\lt_web\web.game\server\src\main\java\controller\quanLy\CapNhatCauHoi.j
 E:\normal\lt_web\web.game\server\src\main\java\model\object\NguoiDung.java
 E:\normal\lt_web\web.game\server\src\main\java\model\dao\GhiChepNguoiDungDao.java
 E:\normal\lt_web\web.game\server\src\main\java\socket\CauHinh.java
+E:\normal\lt_web\web.game\server\src\main\java\controller\quanLy\DanhSachNguoiDung.java
+E:\normal\lt_web\web.game\server\src\main\java\controller\quanLy\CamNguoiDung.java
 E:\normal\lt_web\web.game\server\src\main\java\controller\xacThuc\DangXuat.java
 E:\normal\lt_web\web.game\server\src\main\java\controller\phong\TaoPhong.java
 E:\normal\lt_web\web.game\server\src\main\java\controller\quanLy\XoaCauHoi.java

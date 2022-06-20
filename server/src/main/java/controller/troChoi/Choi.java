@@ -94,7 +94,6 @@ public class Choi {
                     public void run() {
                         Lenh lenhMoi_1 = new Lenh();
                         lenhMoi_1.setLenh("TEST");
-                        System.out.println("foo");
                         for (Iterator<Session> i = phongHienTai.stream().iterator(); i.hasNext();) {
                             Session x = i.next();
                             try {

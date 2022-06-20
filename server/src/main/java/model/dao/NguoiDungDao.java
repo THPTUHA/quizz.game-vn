@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.DatabaseKetNoi;
 import model.object.NguoiDung;
@@ -27,18 +28,21 @@ public class NguoiDungDao {
         return status;
     }
 
-    public static NguoiDung layNguoiDung(ResultSet ketQua) throws SQLException{
+    public static NguoiDung layNguoiDung(ResultSet ketQua, boolean coBaoMat) throws SQLException{
         NguoiDung nguoiDung = new NguoiDung();
         nguoiDung.setId(ketQua.getInt("id"));
         nguoiDung.setAvatar(ketQua.getString("avatar"));
-        nguoiDung.setMatKhau(ketQua.getString("matKhau"));
+        if(coBaoMat){
+            nguoiDung.setMatKhau(ketQua.getString("matKhau"));
+        }
         nguoiDung.setTen(ketQua.getString("ten"));
         nguoiDung.setKinhNghiem(ketQua.getLong("kinhNghiem"));
         nguoiDung.setVang(ketQua.getLong("vang"));
         nguoiDung.setQuyen(ketQua.getString("quyen"));
         return nguoiDung;
     }
-    public static NguoiDung layUserTheoId(int id){
+    
+    public static NguoiDung layUserTheoId(int id, boolean coBaoMat){
         try {
             Connection con  = DatabaseKetNoi.init();
             String query = "select * from nguoiDung where nguoiDung.id = ? limit 1";
@@ -49,7 +53,7 @@ public class NguoiDungDao {
 
             NguoiDung nguoiDung = new NguoiDung();
             while(tapKetQua.next()){
-                nguoiDung = layNguoiDung(tapKetQua);
+                nguoiDung = layNguoiDung(tapKetQua, coBaoMat);
             }
             return nguoiDung;
         } catch (Exception e) {
@@ -58,7 +62,7 @@ public class NguoiDungDao {
         return null;
     }
 
-    public static NguoiDung layNguoiDungTheoTen(String ten){
+    public static NguoiDung layNguoiDungTheoTen(String ten, boolean coBaoMat){
         try {
             Connection con  = DatabaseKetNoi.init();
             String query = "select * from nguoiDung where nguoiDung.ten = ? limit 1";
@@ -68,13 +72,32 @@ public class NguoiDungDao {
 
             NguoiDung nguoiDung = new NguoiDung();
             while(tapKetQua.next()){
-                nguoiDung = layNguoiDung(tapKetQua);
+                nguoiDung = layNguoiDung(tapKetQua,coBaoMat);
             }
             return nguoiDung;
         } catch (Exception e) {
            e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<NguoiDung> phanTrang(int soTrang, int kichThuocTrang){
+        ArrayList<NguoiDung> danhSachNguoiDung = new ArrayList<>();
+        try {
+            Connection con  = DatabaseKetNoi.init();
+            String query = "select * from nguoiDung limit ? offset ?";
+            PreparedStatement ps=con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,  ResultSet.CONCUR_UPDATABLE); 
+            ps.setInt(1, kichThuocTrang);
+            ps.setInt(2, kichThuocTrang*(soTrang-1));
+            ResultSet tapKetQua = ps.executeQuery();
+            while(tapKetQua.next()){
+                NguoiDung nguoiDung = layNguoiDung(tapKetQua, false);
+                danhSachNguoiDung.add(nguoiDung);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return danhSachNguoiDung;
     }
 
 }

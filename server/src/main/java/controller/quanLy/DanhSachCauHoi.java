@@ -26,10 +26,13 @@ public class DanhSachCauHoi extends HttpServlet{
             TienIch.guiJson(resp, new Loi(-1,"Bạn không có quyền!"));
             return;
         }
+
+        ArrayList<NguoiDung> danhSachNguoiDung = new ArrayList<>();
         ArrayList<CauHoi> danhSachCauHoi = CauHoiDao.phanTrang(1,10);
         for(CauHoi cauHoi: danhSachCauHoi){
             System.out.println(cauHoi.getNoiDung());
         }
-        TienIch.guiJson(resp, new Game(danhSachCauHoi));
+
+        TienIch.guiJson(resp, new Game(danhSachCauHoi, danhSachNguoiDung));
     }
 }

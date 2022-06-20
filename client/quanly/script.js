@@ -18,7 +18,6 @@ function lay_nguoidung() {
     const fetch = new Fetch();
     fetch.getJWT("quan-ly/danh-sach/nguoi-dung")
         .then(function (data) {
-            console.log(data);
             const ds_nguoidung = data.danhSachNguoiDung;
             if (ds_nguoidung.length > 0) {
                 var html = "";
@@ -59,10 +58,7 @@ function thaotac(id, trangthai) {
         id: id
     })
         .then(function (data) {
-            console.log(data);
             if (data.id == id) {
-                // alert(data.message);
-                // alert("Thao tác thành công!");
                 if (trangthai) {
                     document.getElementById(id).innerHTML = "Mở khóa";
                     document.getElementById(id).onclick = function () {
@@ -122,8 +118,6 @@ function lay_cauhoi() {
     const fetch = new Fetch();
     fetch.getJWT("quan-ly/danh-sach/cau-hoi")
         .then(function (data) {
-            console.log(data);
-            console.log(data.danhSachCauHoi);
             var ds_cauhoi = data.danhSachCauHoi;
             var html = `
                     <tr>
@@ -184,7 +178,6 @@ function xoacauhoi(id) {
         id: id
     })
         .then(function (data) {
-            console.log(data);
             try {
                 let id = data.id;
                 alert("Xóa thành công!");
@@ -299,9 +292,6 @@ function luu() {
         diem: diem
     })
         .then(function (data) {
-
-            console.log(data);
-
             try {
                 let id = data.id;
                 dapan = dapan.id === 1 ? "a" : dapan.id === 2 ? "b" : dapan.id === 3 ? "c" : "d";

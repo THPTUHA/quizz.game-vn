@@ -10,12 +10,13 @@ public class GhiChepNguoiDung {
 
     }
     
-    public GhiChepNguoiDung(NguoiDung nguoiDung, Phong phong, int diem, int trangThai) {
+    public GhiChepNguoiDung(NguoiDung nguoiDung, Phong phong, int diem, int trangThai ) {
         this.nguoiDung = nguoiDung;
         this.phong = phong;
         this.diem = diem;
         this.trangThai = trangThai;
     }
+
 
 
     public NguoiDung getNguoiDung() {
@@ -59,5 +60,6 @@ public class GhiChepNguoiDung {
             ", trangThai='" + getTrangThai() + "'" +
             "}";
     }
+    
 }
 

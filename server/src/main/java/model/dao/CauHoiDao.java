@@ -128,4 +128,21 @@ public class CauHoiDao {
         }
         return danhSachCauHoi;
     }
+
+    public static ArrayList<CauHoi> layTatCa(){
+        ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
+        try {
+            Connection con  = DatabaseKetNoi.init();
+            String query = "select * from cauHoi ";
+            PreparedStatement ps=con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,  ResultSet.CONCUR_UPDATABLE); 
+            ResultSet tapKetQua = ps.executeQuery();
+            while(tapKetQua.next()){
+                CauHoi cauHoi = LayCauHoi(tapKetQua);
+                danhSachCauHoi.add(cauHoi);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return danhSachCauHoi;
+    }
 }

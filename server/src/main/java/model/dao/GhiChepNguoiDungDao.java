@@ -15,12 +15,13 @@ public class GhiChepNguoiDungDao {
         int trangThai = 0;
         try {
             Connection con  = DatabaseKetNoi.init();
-            String query = "insert into ghiChepNguoiDung(nguoiDungId,phongId,diem,trangThai) values (?,?,?,?)";
+            String query = "insert into ghiChepNguoiDung(nguoiDungId,phongId,diem,trangThai,anhDaiDien) values (?,?,?,?,?)";
             PreparedStatement ps=con.prepareStatement(query); 
             ps.setInt(1, ghiChepNguoiDung.getNguoiDung().getId());
             ps.setInt(2, ghiChepNguoiDung.getPhong().getId());
             ps.setInt(3, ghiChepNguoiDung.getDiem());
             ps.setInt(4, ghiChepNguoiDung.getTrangThai());
+            ps.setString(5, ghiChepNguoiDung.getNguoiDung().getAnhDaiDien());
             trangThai = ps.executeUpdate();
             System.out.println(trangThai);
 

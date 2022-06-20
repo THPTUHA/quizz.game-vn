@@ -36,7 +36,7 @@ public class PhongDao {
         return trangThai;
     }
 
-    public static Phong layRoomTheoId(int id){
+    public static Phong layPhongTheoId(int id){
         try {
             Connection con  = DatabaseKetNoi.init();
             String query = "select * from phong where phong.id = ? limit 1";
@@ -58,7 +58,7 @@ public class PhongDao {
         return null;
     }
 
-    public static Phong layRoomTheoId(Phong phongCanTim){
+    public static Phong layPhongTheoId(Phong phongCanTim){
         try {
             Connection con  = DatabaseKetNoi.init();
             String query = "select * from phong where phong.id = ? and phong.trangThai = ? limit 1";

@@ -31,7 +31,7 @@ public class NguoiDungDao {
     public static NguoiDung layNguoiDung(ResultSet ketQua, boolean coBaoMat) throws SQLException{
         NguoiDung nguoiDung = new NguoiDung();
         nguoiDung.setId(ketQua.getInt("id"));
-        nguoiDung.setAvatar(ketQua.getString("avatar"));
+        nguoiDung.setAnhDaiDien(ketQua.getString("avatar"));
         if(coBaoMat){
             nguoiDung.setMatKhau(ketQua.getString("matKhau"));
         }
@@ -39,6 +39,7 @@ public class NguoiDungDao {
         nguoiDung.setKinhNghiem(ketQua.getLong("kinhNghiem"));
         nguoiDung.setVang(ketQua.getLong("vang"));
         nguoiDung.setQuyen(ketQua.getString("quyen"));
+        nguoiDung.setTrangThai(ketQua.getInt("trangThai"));
         return nguoiDung;
     }
     
@@ -98,6 +99,21 @@ public class NguoiDungDao {
             e.printStackTrace();
         }
         return danhSachNguoiDung;
+    }
+
+    public static int capNhat(NguoiDung nguoiDung){
+        int  status = 0;
+        try {
+            Connection con  = DatabaseKetNoi.init();
+            String query = "update nguoiDung set trangThai = ? where id = ?";
+            PreparedStatement ps=con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,  ResultSet.CONCUR_UPDATABLE); 
+            ps.setInt(1, nguoiDung.getTrangThai());
+            ps.setInt(2, nguoiDung.getId());
+            status = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 
 }

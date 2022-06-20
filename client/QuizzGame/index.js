@@ -11,7 +11,7 @@ const dapAn2 = document.getElementById("dapAn1");
 const dapAn3 = document.getElementById("dapAn2");
 const dapAn4 = document.getElementById("dapAn3");
 
-const danhSachLuaChon  = [dapAn1,dapAn2,dapAn3,dapAn4];
+const danhSachLuaChon = [dapAn1, dapAn2, dapAn3, dapAn4];
 const soCau = document.getElementById("soCau");
 const tenCau = document.getElementById("tenCau");
 const diem = document.getElementById("diem");
@@ -32,13 +32,10 @@ websocket.onmessage = (duLieu) => {
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
             nguoiChoiSoMot.childNodes[3].innerText = lenh.chuPhong.nguoiDung.ten;
             nguoiChoiSoMot.childNodes[5].childNodes[3].innerText = lenh.chuPhong.diem;
-<<<<<<< HEAD
-            nguoiChoiSoMot.style.display ="block";
+            nguoiChoiSoMot.style.display = "block";
 
-=======
             nguoiChoiSoMot.style.display = "block";
             localStorage.setItem("chuPhong", 1);
->>>>>>> fb8a9267bb409615cc50a5f245f61b144c3b9f27
             break;
         case "batDau":
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
@@ -52,15 +49,15 @@ websocket.onmessage = (duLieu) => {
             nguoiChoiSoHai.style.display = "block";
             phongMoi.style.display = "none";
 
-           websocket.send(JSON.stringify({
+            websocket.send(JSON.stringify({
                 lenh: "batDau"
             }));
-        case "guiCauHoi": 
+        case "guiCauHoi":
             soCau.innerText = "Câu :";
             tenCau.innerText = lenh.cauHoi.noiDung;
             diem.innerText = lenh.cauHoi.diem;
             capDo.innerText = lenh.cauHoi.capDo;
-            for(let i = 0 ;i < lenh.cauHoi.goiY.danhSachLuaChon.length ; ++i){
+            for (let i = 0; i < lenh.cauHoi.goiY.danhSachLuaChon.length; ++i) {
                 danhSachLuaChon[i].innerText = lenh.cauHoi.goiY.danhSachLuaChon[i].noiDung;
                 danhSachLuaChon[i].tabIndex = lenh.cauHoi.goiY.danhSachLuaChon[i].id;
             }

@@ -3,7 +3,7 @@ function hienAvt(res) {
 }
 
 //tạo phòng
-var phongMoi = document.getElementById("phongMoi");
+var phongMoi = document.getElementById("doiNguoiChoi");
 var taoPhong = document.getElementById("buttonTaoPhong");
 var taoPhongMoi = document.getElementsByClassName("taoPhong");
 var thoatPhong = document.getElementsByClassName("thoat");

@@ -12,7 +12,8 @@ body {
 
 #buttonNhanVat:hover {
     background-color: blueviolet;
-    border-radius: 70px;
+    border-radius: 20px;
+    border-width: 10px;
 }
 
 h1 {
@@ -89,14 +90,45 @@ input {
     text-align: center;
 }
 
+.dangTai {
+    border: 10px solid rgb(103, 11, 189);
+    border-radius: 50%;
+    border-top: 10px solid rgb(163, 96, 226);
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 #nhanVat {
     text-align: center;
     margin-top: 400px;
     margin-left: 100px;
 }
 
-.modal-noiDung {
-    width: 400px;
+.modal-doiNguoiChoi {
+    width: 600px;
     margin: auto;
     top: 30%;
     position: relative;
@@ -126,66 +158,23 @@ input {
     border: none;
     background-color: blueviolet;
     border-radius: 5px;
-    color: #ffffff;
-    cursor: pointer;
     padding: 0px 30px;
     display: inline-block;
     margin: 30px 30px;
     line-height: 46px;
     font-weight: 400;
-    font-size: 1em;
-    outline: none;
-    position: relative;
-    overflow: hidden;
     font-size: 16px;
     border-radius: 23px;
-    letter-spacing: 2px;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 input {
     text-indent: 10px;
 }
 
-#buttonBatDau:before {
-    opacity: 0;
-    content: "";
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    border-radius: inherit;
-    background-color: #ffffff;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-}
 
-#buttonBatDau:after {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    border: 3px solid darkturquoise;
-    content: '';
-    border-radius: inherit;
-}
 
 #buttonBatDau:hover,
 #buttonBatDau.hover {
     background-color: darkturquoise;
     color: #ffffff;
-}
-
-#buttonBatDau:hover:before,
-#buttonBatDau.hover:before {
-    -webkit-transform: translateY(0%);
-    transform: translateY(0%);
-    opacity: 0.25;
 }

@@ -1,6 +1,6 @@
 class Fetch {
   constructor() {
-    this.base_url = 'http://26.69.27.44:8080/wg.server';
+    this.base_url = 'http://127.0.0.1:8080/wg.server';
   }
 
   async post(url = '', data = {}) {
@@ -50,7 +50,7 @@ class Fetch {
 }
 
 
-const url = window.location.href;
-if (url[url.length - 1] != "/") {
-  window.location.href = url + "/";
-}
+// const url = window.location.href;
+// if (url[url.length - 1] != "/") {
+//   window.location.href = url + "/";
+// }

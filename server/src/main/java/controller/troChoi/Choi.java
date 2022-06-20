@@ -26,6 +26,7 @@ import lop.Lenh;
 import lop.MaHoa;
 import model.dao.CauHoiDao;
 import model.object.CauHoi;
+import model.object.GhiChepNguoiDung;
 import socket.CauHinh;
 
 
@@ -37,14 +38,13 @@ public class Choi {
     static Map<Integer,ArrayList<Session>> danhSachPhong =  Collections.synchronizedMap(new HashMap<Integer,ArrayList<Session>>());
     // static Set<Session> chatroom_users = Collections.synchronizedSet(new HashSet<Session>());
     final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-    private int phongId;
+    private int phongId ;
 
 
 
     @OnOpen
     public void handleOpen(EndpointConfig endpoint_config, Session phien) throws IOException {
-        if(endpoint_config.getUserProperties().get("phongId") == null 
-            || endpoint_config.getUserProperties().get("ten") ==  null){
+        if(endpoint_config.getUserProperties().get("nguoiChoi") == null){
                 System.out.println("Không tồn tại endpoint");
                 try {
                     phien.close();
@@ -54,8 +54,11 @@ public class Choi {
                 return;
         }
 
-        phongId = (int) endpoint_config.getUserProperties().get("phongId");
+        GhiChepNguoiDung nguoiDung = (GhiChepNguoiDung) endpoint_config.getUserProperties().get("nguoiChoi");
+
+        int phongId = nguoiDung.getPhong().getId();
         System.out.println("PHONG_ID"+phongId);
+        Lenh lenhThongBao = new Lenh("khoiTao");
         if (danhSachPhong.containsKey(phongId)) {
             // Da ton tai phong
             ArrayList<Session> phongHienTai =  danhSachPhong.get(phongId);
@@ -63,16 +66,14 @@ public class Choi {
             System.out.println("Kich thuoc phong "+ phong.size());
             if (phong.size() == 1) {
                 // Gui lenh bat dau cho chu phong khi nguoi choi da vao du
-                Lenh lenhBatDau = new Lenh();
-                lenhBatDau.setLenh("batDau");
-                lenhBatDau.setPhongId(phongId);
+                lenhThongBao.setLenh("batDau");
+                lenhThongBao.setPhongId(phongId);
                 phongHienTai.add(phien);
-                phong.get(0).getAsyncRemote().sendObject(lenhBatDau);
 
-
-                // Khoi tao diem bang 0
+                lenhThongBao.setChuPhong((GhiChepNguoiDung)phongHienTai.get(0).getUserProperties().get("nguoiChoi"));
+                lenhThongBao.setKhach((GhiChepNguoiDung)phongHienTai.get(1).getUserProperties().get("nguoiChoi"));
                 for (Session phienNguoiDung: phongHienTai) {
-                    phienNguoiDung.getUserProperties().put("diem", 0);
+                    phienNguoiDung.getAsyncRemote().sendObject(lenhThongBao);
                 }
             }
             else {
@@ -87,16 +88,15 @@ public class Choi {
             ArrayList<Session> phongMoi = new ArrayList<>();
             phongMoi.add(phien);
             danhSachPhong.put(phongId, phongMoi);
+
+            lenhThongBao.setChuPhong(nguoiDung);
+            phien.getAsyncRemote().sendObject(lenhThongBao);
         }
     }
 
     @OnMessage
     public void handleMessage(Lenh lenh,final Session phien) throws IOException{
         System.out.println("lenh "+ lenh);
-        String ten = (String)phien.getUserProperties().get("ten");
-        phongId = (int) phien.getUserProperties().get("phongId");
-
-        System.out.println("-----------Username"+ten);
 
         Lenh lenhMoi = new Lenh();
         final ArrayList<Session> phongHienTai = danhSachPhong.get(phongId);
@@ -150,16 +150,15 @@ public class Choi {
                         CauHoi cauHoi = danhSachCauHoi.get((int)phien.getUserProperties().get("cauHienTai"));
                         if (cauHoi.getDapAn() == lenh.getCauHoi().getDapAn()) {
                             // Tra loi dung
-                            int diemChuPhong = (int)phongHienTai.get(0).getUserProperties().get("diem");
-                            int diemKhach = (int)phongHienTai.get(1).getUserProperties().get("diem");
+                            GhiChepNguoiDung khach = (GhiChepNguoiDung)phongHienTai.get(1).getUserProperties().get("nguoiDung");
+                            GhiChepNguoiDung chuPhong = (GhiChepNguoiDung)phongHienTai.get(0).getUserProperties().get("nguoiDung");
+                            
                             int delta = (int)(((float)HangSo.THOI_GIAN- khoangCachThoiGian) / (HangSo.THOI_GIAN) * cauHoi.getDiem());
-                            if (phien == phongHienTai.get(0)) diemChuPhong += delta;
-                            else diemKhach += delta;
+                            if (phien == phongHienTai.get(0)) chuPhong.setDiem(chuPhong.getDiem() + delta);
+                            else khach.setDiem(khach.getDiem() + delta);
                             Lenh lenhGuiKetQua = new Lenh();
 
                             lenhGuiKetQua.setLenh("guiKetQua");
-                            lenh.setDiemChuPhong(diemChuPhong);
-                            lenh.setDiemKhach(diemKhach);
 
                             for (Session phienNguoiDung: phongHienTai) {
                                 phienNguoiDung.getAsyncRemote().sendObject(lenhGuiKetQua);
@@ -187,7 +186,6 @@ public class Choi {
     @OnClose
     public void handleClose(Session phien){
         System.out.println("-----------Close"+phien);
-        phongId = (int)phien.getUserProperties().get("phongId");
         // xoa phong khoi map danh sach phong
         danhSachPhong.remove(phongId);
     }
@@ -197,6 +195,7 @@ public class Choi {
 
     private void guiCauHoiChoClient(Session phien, ArrayList<CauHoi> danhSachCauHoi) {
         // kiem tra cau hoi hien tai
+        System.out.println("wtf");
         ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
         int cauHienTai = (int)phien.getUserProperties().get("cauHienTai") ;
         if (cauHienTai >= 10) {

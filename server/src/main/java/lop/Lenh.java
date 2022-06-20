@@ -1,6 +1,8 @@
 package lop;
 
 import model.object.CauHoi;
+import model.object.GhiChepNguoiDung;
+import model.object.GhiChepNguoiDung;
 
 import java.util.ArrayList;
 
@@ -9,24 +11,9 @@ public class Lenh {
     private int phongId;
     private CauHoi cauHoi;
     private Loi loi;
-    private int diemChuPhong;
-    private int diemKhach;
+    private GhiChepNguoiDung chuPhong;
+    private GhiChepNguoiDung khach;
 
-    public int getDiemChuPhong() {
-        return diemChuPhong;
-    }
-
-    public void setDiemChuPhong(int diemChuPhong) {
-        this.diemChuPhong = diemChuPhong;
-    }
-
-    public int getDiemKhach() {
-        return diemKhach;
-    }
-
-    public void setDiemKhach(int diemKhach) {
-        this.diemKhach = diemKhach;
-    }
 
     public Lenh() {
     }
@@ -47,8 +34,30 @@ public class Lenh {
         this.lenh = lenh;
     }
 
+    public GhiChepNguoiDung getChuPhong() {
+        return chuPhong;
+    }
 
+    /**
+     * @param chuPhong the chuPhong to set
+     */
+    public void setChuPhong(GhiChepNguoiDung chuPhong) {
+        this.chuPhong = chuPhong;
+    }
 
+    /**
+     * @return the khach
+     */
+    public GhiChepNguoiDung getKhach() {
+        return khach;
+    }
+
+    /**
+     * @param khach the khach to set
+     */
+    public void setKhach(GhiChepNguoiDung khach) {
+        this.khach = khach;
+    }
     public String getLenh() {
         return this.lenh;
     }

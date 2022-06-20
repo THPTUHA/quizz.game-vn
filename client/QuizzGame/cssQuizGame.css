@@ -169,3 +169,30 @@ h1 {
     transform: translateY(0%);
     opacity: 0.25;
 }
+
+.modal-doiNguoiChoi {
+    width: 600px;
+    margin: auto;
+    top: 30%;
+    position: relative;
+    background-color: rgb(163, 96, 226);
+    border-radius: 30px;
+}
+
+.modal {
+    background-color: rgb(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal1 {
+    background-color: rgb(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}

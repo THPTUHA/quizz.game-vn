@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cssQuizGame.css">
+    <title>quizz game</title>
+</head>
+
+<body>
+    <div id="quizzGame">
+        <div id="nguoiChoiSoMot" style="display: none;">
+            <img id="avt1" src="../img/avt1.png" alt="">
+            <h1 id="name"></h1>
+            <div id="point">
+                <h1>Point</h1>
+                <div id="numPoint">0</div>
+            </div>
+        </div>
+        <div id="giaoDienCauHoi" style="display: none;">
+            <div id="">
+                <div id="soCau">Câu 1:</div>
+                <div id="tenCau">Trong Header của IP Packet có chứa ?
+                </div>
+            </div>
+            <div id="cauHoi">
+                <button id="dapAn1">Địa chỉ nguồn</button><br>
+                <button id="dapAn2">Địa chỉ đích</button><br>
+                <button id="dapAn3">Không chứa địa chỉ nào cả</button><br>
+                <button id="dapAn4">Cả địa chỉ nguồn và địa chỉ đích</button>
+            </div>
+            <div id="thoiGian">
+                <img id="anhThoiGian" src="../img/thoiGian.png" alt="">
+                <div id="textThoiGian">Thời gian của bạn còn </div>
+                <div id="textThoiGian" style=" margin-left: 5px;"> 120s</div>
+            </div>
+        </div>
+        <div id="nguoiChoiSoHai" style="display: none;">
+            <img id="avt2" src="../img/avt2.png" alt="">
+            <h1 id="name">Victosmat</h1>
+            <div id="point">
+                <h1>Point</h1>
+                <div id="numPoint">0</div>
+            </div>
+        </div>
+        <div id="doiNguoiChoi" class="modal">
+            <div class="modal-doiNguoiChoi">
+                <h1>Đang đợi người chơi ...</h1>
+                <div id="phongId"></div>
+                <div class="dangTai"></div><br>
+                <button id="buttonBatDau" class="thoat"" onclick=" btnThoat()">Thoát</button>
+                <!-- <input id="txtPhongMoi" type="text" value=""><br>
+                <div id="nutXuLy">
+                    <button id="buttonBatDau" class="taoPhong" onclick="btnTaoPhong()">Tạo phòng</button>
+                    <button id="buttonBatDau" class="thoat"" onclick=" btnThoat()">Thoát</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

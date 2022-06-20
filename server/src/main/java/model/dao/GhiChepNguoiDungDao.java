@@ -37,6 +37,7 @@ public class GhiChepNguoiDungDao {
         ghiChepNguoiDung.setTrangThai(tapKetQua.getInt("trangThai"));
         ghiChepNguoiDung.setDiem(tapKetQua.getInt("diem"));
         ghiChepNguoiDung.setPhong(phong);
+        nguoiDung.setAnhDaiDien(tapKetQua.getString("anhDaiDien"));
         return ghiChepNguoiDung;
     }
     public static GhiChepNguoiDung layGhiChepNguoiDung(NguoiDung nguoiDung, Phong phong){

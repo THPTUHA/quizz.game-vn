@@ -1,6 +1,8 @@
 package controller.troChoi;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -18,6 +20,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import hangSo.HangSo;
 import lop.GiaiMa;
 import lop.Lenh;
 import lop.MaHoa;
@@ -25,26 +28,17 @@ import model.dao.CauHoiDao;
 import model.object.CauHoi;
 import socket.CauHinh;
 
-// TODO: them so luong cau hoi khi config
 
 @ServerEndpoint(value="/tro-choi", configurator = CauHinh.class ,
                 decoders = GiaiMa.class, 
                 encoders = MaHoa.class
             )
 public class Choi {
-    static Map<Integer,ArrayList<Session>> danhSachPhong =  Collections.synchronizedMap(new HashMap<Integer,ArrayList<Session>>());
+    static Map<Integer,ArrayList<Session>> danhSachPhong =  Collections.synchronizedMap(new HashMap<>());
     // static Set<Session> chatroom_users = Collections.synchronizedSet(new HashSet<Session>());
-    private ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
+    final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private int phongId;
-    private boolean chuPhong = false;
 
-    private void setChuPhong(boolean chuPhong) {
-        this.chuPhong = chuPhong;
-    }
-
-    private boolean getChuPhong() {
-        return this.chuPhong;
-    }
 
 
     @OnOpen
@@ -61,9 +55,8 @@ public class Choi {
         }
 
         phongId = (int) endpoint_config.getUserProperties().get("phongId");
-        String ten = (String) endpoint_config.getUserProperties().get("ten");
         System.out.println("PHONG_ID"+phongId);
-        if(danhSachPhong.containsKey(phongId)){
+        if (danhSachPhong.containsKey(phongId)) {
             // Da ton tai phong
             ArrayList<Session> phongHienTai =  danhSachPhong.get(phongId);
             ArrayList<Session> phong = danhSachPhong.get(phongId);
@@ -75,16 +68,21 @@ public class Choi {
                 lenhBatDau.setPhongId(phongId);
                 phongHienTai.add(phien);
                 phong.get(0).getAsyncRemote().sendObject(lenhBatDau);
+
+
+                // Khoi tao diem bang 0
+                for (Session phienNguoiDung: phongHienTai) {
+                    phienNguoiDung.getUserProperties().put("diem", 0);
+                }
             }
             else {
                 System.out.println("Loi so luong phien trong phong");
                 phien.close();
-                return;
             }
         }
         else {
             // Tao phong moi -> set chu phong
-            setChuPhong(true);
+            phien.getUserProperties().put("chuPhong", true);
             System.out.println("PHONG_MOI"+phongId);
             ArrayList<Session> phongMoi = new ArrayList<>();
             phongMoi.add(phien);
@@ -102,6 +100,7 @@ public class Choi {
 
         Lenh lenhMoi = new Lenh();
         final ArrayList<Session> phongHienTai = danhSachPhong.get(phongId);
+        final ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
 
         switch(lenh.getLenh()){
             // Lenh batDau duoc gui tu client chu phong den may chu de tien hay tao bo cau hoi va bat dau dong ho dem nguoc
@@ -109,10 +108,9 @@ public class Choi {
 
                 // kiem tra neu khong phai chu phong -> break
 
-                if (!getChuPhong()) break;
+                if ((boolean)phien.getUserProperties().get("chuPhong") == false) break;
                 System.out.println("chu phong");
                 // Sinh bo cau hoi ngau nhien
-                final ArrayList<CauHoi> danhSachCauHoi = new ArrayList<>();
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(4,1));
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,2));
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,3));
@@ -124,18 +122,49 @@ public class Choi {
                     phienNguoiDung.getUserProperties().put("cauHienTai", 0);
                 }
 
-                    timer.scheduleWithFixedDelay(new Runnable() {
-                    @Override
-                    public void run() {
-                        guiCauHoiChoClient(phien, danhSachCauHoi);
-                    }
-                }, 2, 1, TimeUnit.SECONDS);
-                    
+                timer.scheduleWithFixedDelay(() -> guiCauHoiChoClient(phien, danhSachCauHoi), 3000, HangSo.THOI_GIAN, TimeUnit.MILLISECONDS);
+                break;
+            case "guiDapAn":
+                int idCauHoi = lenh.getCauHoi().getId();
+                // Neu cau hoi co dap an gui dc gui tu client khac cau hien tai -> loi~
+                if (idCauHoi != (int)phien.getUserProperties().get("idCauHienTai")) {
+                    Lenh lenhLoi = new Lenh();
+                    lenhLoi.setLenh("Loi");
+                    phien.getAsyncRemote().sendObject(lenhLoi);
+                }
+                else {
+                    int khoangCachThoiGian = (int) ChronoUnit.MILLIS.between(LocalDateTime.now(), (LocalDateTime)phien.getUserProperties().get("thoiGianGuiCauHoi"));
 
-                // }else{
-                //     lenhMoi.setLenh("Loi");
-                //     lenhMoi.setLoi(new Loi(-1, "Phòng không tồn tại!"));
-                // }
+                    if (khoangCachThoiGian > HangSo.THOI_GIAN) {
+                        Lenh lenhLoi = new Lenh();
+                        lenhLoi.setLenh("Loi");
+                        phien.getAsyncRemote().sendObject(lenhLoi);
+                    }
+                    // request gui dap an hop le
+                    else {
+                        CauHoi cauHoi = danhSachCauHoi.get((int)phien.getUserProperties().get("cauHienTai"));
+                        if (cauHoi.getDapAn() == lenh.getCauHoi().getDapAn()) {
+                            // Tra loi dung
+                            int diemChuPhong = (int)phongHienTai.get(0).getUserProperties().get("diem");
+                            int diemKhach = (int)phongHienTai.get(1).getUserProperties().get("diem");
+                            int delta = (int)(((float)HangSo.THOI_GIAN- khoangCachThoiGian) / (HangSo.THOI_GIAN) * cauHoi.getDiem());
+                            if (phien == phongHienTai.get(0)) diemChuPhong += delta;
+                            else diemKhach += delta;
+                            Lenh lenhGuiKetQua = new Lenh();
+
+                            lenhGuiKetQua.setLenh("guiKetQua");
+                            lenh.setDiemChuPhong(diemChuPhong);
+                            lenh.setDiemKhach(diemKhach);
+
+                            for (Session phienNguoiDung: phongHienTai) {
+                                phienNguoiDung.getAsyncRemote().sendObject(lenhGuiKetQua);
+                            }
+
+                        }
+
+                    }
+                }
+                break;
         }
         
 
@@ -155,7 +184,7 @@ public class Choi {
         System.out.println("-----------Close"+phien);
         phongId = (int)phien.getUserProperties().get("phongId");
         // xoa phong khoi map danh sach phong
-        if (danhSachPhong.containsKey(phongId)) danhSachPhong.remove(phongId);
+        danhSachPhong.remove(phongId);
     }
 
     @OnError
@@ -174,18 +203,30 @@ public class Choi {
 
             // Huy dong ho dem nguoc
             timer.shutdown();
+
+            // Thoat het cac phien
+            for (Session phienNguoiDung: phienTrongPhong) {
+                try {
+                    phienNguoiDung.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         else {
             System.out.println("Cau hoi hien tai "+ cauHienTai);
             Lenh lenhGuiCauHoi = new Lenh("guiCauHoi", danhSachCauHoi.get(cauHienTai));
             System.out.println("Cau hoi moi : "+  danhSachCauHoi.get(cauHienTai));
             cauHienTai += 1;
-            // Bo dap an khoi lenh
+            // An dap an khoi cau hoi
             lenhGuiCauHoi.getCauHoi().setDapAn(null);
 
             // Gui lenhGuiCauHoi cho cac phien trong phong
             for (Session phienNguoiDung: phienTrongPhong) {
                 phienNguoiDung.getUserProperties().put("cauHienTai", cauHienTai);
+                phienNguoiDung.getUserProperties().put("idCauHienTai", lenhGuiCauHoi.getCauHoi().getId());
+                LocalDateTime thoiGian = LocalDateTime.now();
+                phienNguoiDung.getUserProperties().put("thoiGianGuiCauHoi", thoiGian);
                 if (phienNguoiDung.isOpen()) phienNguoiDung.getAsyncRemote().sendObject(lenhGuiCauHoi);
             }
         }

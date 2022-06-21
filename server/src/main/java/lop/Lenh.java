@@ -10,6 +10,7 @@ public class Lenh {
     private Loi loi;
     private GhiChepNguoiDung chuPhong;
     private GhiChepNguoiDung khach;
+    private int phienGuiDapAn;
 
     public Lenh() {
     }
@@ -86,6 +87,19 @@ public class Lenh {
         this.loi = loi;
     }
     
+    /**
+     * @return the phienGuiDapAn
+     */
+    public int getPhienGuiDapAn() {
+        return phienGuiDapAn;
+    }
+
+    /**
+     * @param phienGuiDapAn the phienGuiDapAn to set
+     */
+    public void setPhienGuiDapAn(int phienGuiDapAn) {
+        this.phienGuiDapAn = phienGuiDapAn;
+    }
 
     @Override
     public String toString() {

@@ -1,12 +1,12 @@
 # GET http://localhost:8080/web.game.server/trang-chu
 
-POST http://localhost:8080/wg.server/xac-thuc/dang-ky
-Content-Type: application/json
+# POST http://localhost:8080/wg.server/xac-thuc/dang-ky
+# Content-Type: application/json
 
-{
-    "ten":"minh2",
-    "matKhau":"123"
-}
+# {
+#     "ten":"minh2",
+#     "matKhau":"123"
+# }
 
 # POST http://localhost:8080/wg.server/xac-thuc/dang-nhap
 # Content-Type: application/json
@@ -144,3 +144,12 @@ Content-Type: application/json
 # GET http://localhost:8080/wg.server/quan-ly/danh-sach/nguoi-dung
 # Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg
+
+
+POST http://localhost:8080/wg.server/tro-choi/ket-qua
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZ2hpYSIsImlhdCI6MTY1NTcwMzQ2MywiZXhwIjoxNjU2MzA4MjYzfQ.c_DgcZZml3j3_x6vIcaD-6qQjjbzr1C2X0ZQJPRonBJjm5ELRdueIByBqS2dDIsEEwfNuFU23wKVpu6NtkZySg
+
+{
+    "id": 130
+}

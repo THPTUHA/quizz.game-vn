@@ -5,6 +5,7 @@ public class GhiChepNguoiDung {
     Phong phong;
     int diem;
     int trangThai;
+    int trangThaiCauTraLoi;
 
     public GhiChepNguoiDung(){
 
@@ -50,7 +51,21 @@ public class GhiChepNguoiDung {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+    
+    /**
+     * @return the trangThaiCauTraLoi
+     */
+    public int getTrangThaiCauTraLoi() {
+        return trangThaiCauTraLoi;
+    }
 
+    /**
+     * @param trangThaiCauTraLoi the trangThaiCauTraLoi to set
+     */
+    public void setTrangThaiCauTraLoi(int trangThaiCauTraLoi) {
+        this.trangThaiCauTraLoi = trangThaiCauTraLoi;
+    }
+    
     @Override
     public String toString() {
         return "{" +

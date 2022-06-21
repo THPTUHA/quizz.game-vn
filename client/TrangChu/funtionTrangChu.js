@@ -62,5 +62,6 @@ function btnTaoPhong() {
 
 
 function btnThoatTroChoi() {
-    window.location.href = "../dangnhap/index.html";
+    localStorage.removeItem("token");
+    window.location.href = "/";
 }

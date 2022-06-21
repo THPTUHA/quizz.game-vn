@@ -161,8 +161,9 @@ public class Choi {
                     else {
                         
                         Game gameHienTai = (Game)phien.getUserProperties().get("game");
-
-                        CauHoi cauHoi = gameHienTai.getDanhSachCauHoi().get((int)phien.getUserProperties().get("cauHienTai") - 1);
+                        int soThuTu = (int)phien.getUserProperties().get("cauHienTai");
+                        System.out.print("so Thu Tu"+soThuTu);
+                        CauHoi cauHoi = gameHienTai.getDanhSachCauHoi().get(soThuTu);
                         
                        
                         GhiChepNguoiDung khach = (GhiChepNguoiDung)phongHienTai.get(1).getUserProperties().get("nguoiChoi");

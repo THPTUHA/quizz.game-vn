@@ -98,7 +98,7 @@ websocket.onmessage = (duLieu) => {
 }
 
 const guiDapAn = (id) => {
-    //console.log("ID CAU HOI",localStorage.getItem("cauHoiId"),id);
+    console.log("ID CAU HOI",localStorage.getItem("cauHoiId"),id);
     localStorage.setItem("cauTraLoi",id);
     websocket.send(JSON.stringify({
         lenh:"guiDapAn",

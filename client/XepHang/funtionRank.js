@@ -4,7 +4,7 @@ function btnXemDiem() {
 
 
 function btnThoat() {
-    window.location.href = "../TrangChu/TrangChu.html";
+    window.location.href = "/TrangChu/";
 }
 
 const nhanVat = document.getElementById("nhanVat");

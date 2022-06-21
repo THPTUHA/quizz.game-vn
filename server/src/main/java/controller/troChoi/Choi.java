@@ -115,7 +115,7 @@ public class Choi {
                 if ((boolean)phien.getUserProperties().get("chuPhong") == false) break;
                 // Sinh bo cau hoi ngau nhien
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(4,1));
-                danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,2));
+                danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(4,2));
                 danhSachCauHoi.addAll(CauHoiDao.layCauHoiTheoCapDo(3,3));
 
                 // Set cau hoi hien tai
@@ -263,7 +263,7 @@ public class Choi {
         ArrayList<Session> phienTrongPhong = danhSachPhong.get(phongId);
         int cauHienTai = (int)phien.getUserProperties().get("cauHienTai") ;
         System.out.println("cau Hoi hien tai"+ cauHienTai);
-        if (cauHienTai >= danhSachCauHoi.size()) {
+        if (cauHienTai >= danhSachCauHoi.size()-1) {
             System.out.println("Het cau hoi");
             Lenh lenhKetThuc = new Lenh("ketThuc");
 
@@ -288,7 +288,7 @@ public class Choi {
         else {
             System.out.println("Kich thuoc "+ danhSachCauHoi.size());
             CauHoi cauHoi = danhSachCauHoi.get(cauHienTai);
-            System.out.println("Cau hoi "+cauHoi);
+            System.out.println("Cau hoi " + cauHoi);
             cauHoi.setSoThuTu(cauHienTai);
             cauHoi.setThoiGianTonTai(HangSo.THOI_GIAN);
 

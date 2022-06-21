@@ -32,15 +32,8 @@ websocket.onmessage = (duLieu) => {
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
             nguoiChoiSoMot.childNodes[3].innerText = lenh.chuPhong.nguoiDung.ten;
             nguoiChoiSoMot.childNodes[5].childNodes[3].innerText = lenh.chuPhong.diem;
-<<<<<<< HEAD
-            nguoiChoiSoMot.style.display ="block";
-
-=======
             nguoiChoiSoMot.style.display = "block";
 
-            nguoiChoiSoMot.style.display = "block";
-            localStorage.setItem("chuPhong", 1);
->>>>>>> c27a5c5549775532d71cde777c8527a128ebb977
             break;
         case "batDau":
             nguoiChoiSoMot.childNodes[1].src = `../img/avt${lenh.chuPhong.nguoiDung.anhDaiDien}.png`;
@@ -57,25 +50,25 @@ websocket.onmessage = (duLieu) => {
             websocket.send(JSON.stringify({
                 lenh: "batDau"
             }));
-        case "guiCauHoi": 
-            soCau.innerText = "Câu " +(lenh.cauHoi.soThuTu +1) ;
+        case "guiCauHoi":
+            soCau.innerText = "Câu " + (lenh.cauHoi.soThuTu + 1);
             tenCau.innerText = lenh.cauHoi.noiDung;
-            diem.innerText = "Điểm "+ lenh.cauHoi.diem;
+            diem.innerText = "Điểm " + lenh.cauHoi.diem;
             capDo.innerText = "Cấp độ " + lenh.cauHoi.capDo;
-            for(let i = 0 ;i < lenh.cauHoi.goiY.danhSachLuaChon.length ; ++i){
+            for (let i = 0; i < lenh.cauHoi.goiY.danhSachLuaChon.length; ++i) {
                 danhSachLuaChon[i].innerText = lenh.cauHoi.goiY.danhSachLuaChon[i].noiDung;
                 danhSachLuaChon[i].tabIndex = lenh.cauHoi.goiY.danhSachLuaChon[i].id;
             }
             cauHoi.style.display = "block";
-            let thoiGianConLai = parseInt(lenh.cauHoi.thoiGianTonTai/1000);
+            let thoiGianConLai = parseInt(lenh.cauHoi.thoiGianTonTai / 1000);
             clearInterval(interval);
-            interval = setInterval(()=>{
-                if(thoiGianConLai < 0){
+            interval = setInterval(() => {
+                if (thoiGianConLai < 0) {
                     clearInterval(interval);
                 }
                 thoiGianTonTai.innerText = (thoiGianConLai - 1) + 's';
                 thoiGianConLai -= 1;
-            },1000);
+            }, 1000);
 
     }
 }

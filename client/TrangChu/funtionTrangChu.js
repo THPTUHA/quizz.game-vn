@@ -65,3 +65,8 @@ function btnThoatTroChoi() {
     localStorage.removeItem("token");
     window.location.href = "/";
 }
+
+
+if (!localStorage.getItem("token")) {
+    window.location.href = "/dangnhap";
+}

@@ -82,3 +82,8 @@ function btnThoat() {
     phongMoi.style.display = "none";
     window.location.href = "../trangchu";
 }
+
+
+if (!localStorage.getItem("token")) {
+    window.location.href = "/dangnhap";
+}

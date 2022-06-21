@@ -54,3 +54,5 @@ class Fetch {
 // if (url[url.length - 1] != "/") {
 //   window.location.href = url + "/";
 // }
+
+

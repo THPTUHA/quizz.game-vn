@@ -56,18 +56,18 @@ websocket.onmessage = (duLieu) => {
             localStorage.setItem("cauHoiId",lenh.cauHoi.id);
             soCau.innerText = "Câu " +(lenh.cauHoi.soThuTu +1) ;
             tenCau.innerText = lenh.cauHoi.noiDung;
-            diem.innerText = "Điểm "+ lenh.cauHoi.diem;
+            diem.innerText = "Điểm " + lenh.cauHoi.diem;
             capDo.innerText = "Cấp độ " + lenh.cauHoi.capDo;
-            for(let i = 0 ;i < lenh.cauHoi.goiY.danhSachLuaChon.length ; ++i){
+            for (let i = 0; i < lenh.cauHoi.goiY.danhSachLuaChon.length; ++i) {
                 danhSachLuaChon[i].innerText = lenh.cauHoi.goiY.danhSachLuaChon[i].noiDung;
                 danhSachLuaChon[i].tabIndex = lenh.cauHoi.goiY.danhSachLuaChon[i].id;
                 danhSachLuaChon[i].style.background = "blueviolet"
             }
             cauHoi.style.display = "block";
-            let thoiGianConLai = parseInt(lenh.cauHoi.thoiGianTonTai/1000);
+            let thoiGianConLai = parseInt(lenh.cauHoi.thoiGianTonTai / 1000);
             clearInterval(interval);
-            interval = setInterval(()=>{
-                if(thoiGianConLai < 0){
+            interval = setInterval(() => {
+                if (thoiGianConLai < 0) {
                     clearInterval(interval);
                 }
                 thoiGianTonTai.innerText = (thoiGianConLai - 1) + 's';
@@ -116,4 +116,9 @@ const guiDapAn = (id) => {
 function btnThoat() {
     phongMoi.style.display = "none";
     window.location.href = "../trangchu";
+}
+
+
+if (!localStorage.getItem("token")) {
+    window.location.href = "/dangnhap";
 }

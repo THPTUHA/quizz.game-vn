@@ -432,3 +432,8 @@ document.addEventListener("keydown", function onPress(event) {
 });
 
 chon_nguoidung();
+
+
+if (!localStorage.getItem("token")) {
+    window.location.href = "/dangnhap";
+}
